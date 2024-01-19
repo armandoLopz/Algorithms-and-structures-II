@@ -43,12 +43,16 @@ class ShoppingCart:
             print("No hay productos en el carrito")
 
 userShop = User(1, "Armando", "Lopez", "arm@gmail.com", "Naguanagua")
-cart = ShoppingCart([], userShop)
 
+producty = Product(2, "Jeans", "Cordoury denim jeans", -3, 40)
 product1y = Product(1, "T shirts", "White t shirts, 100% linen",2,10)
-cart.aggProduct(product1y)
 
-producty = Product(2, "Jeans", "Cordoury denim jeans", 3, 40)
-cart.aggProduct(product1y)
+cart = ShoppingCart([product1y,producty], userShop)
+
+producty3 = producty = Product(3, "Jeans", "Cordoury denim jeans", 3, 40)
+product4 = Product(4, "T shirts", "White t shirts, 100% linen",-2,10)
+
+cart.aggProduct(producty3)
+cart.aggProduct(product4)
 
 cart.showProducts()

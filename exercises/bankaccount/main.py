@@ -13,7 +13,7 @@ class BankAccount:
 
         print(f"El estado de la cuenta es de {self.amount}")
     
-    def depositMoney(self,name,lastname,id,depositAmount):
+    def depositMoney(self, depositAmount):
 
         if depositAmount > 0:
             self.amount+= depositAmount
@@ -43,7 +43,8 @@ class Holder:
 userAccount = Holder(29911900,"Armando", "Lopez", "Naguanagua")
 bankAcoounnt = BankAccount(2020, 11,20,"222002020020", 100, userAccount)
 
-bankAcoounnt.depositMoney("Armando", "Lopez","29911900", 0.1)
+bankAcoounnt.depositMoney(0.1)
+bankAcoounnt.depositMo
 bankAcoounnt.retireMoney(100)
 
 
