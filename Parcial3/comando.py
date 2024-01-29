@@ -11,9 +11,10 @@ class comando:
         
     def commandDir(self, unidad):
 
-        for unidad in unidad:
+        print(f"ARCHIVOS DE LA UNIDAD {unidad.getNameUnidad}")
+        unidad.contentUnit()
 
-            unidad.contentUnit()
+            
     
     #GETTERS 
     

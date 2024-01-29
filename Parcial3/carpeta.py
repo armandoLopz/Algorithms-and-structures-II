@@ -8,7 +8,7 @@ class carpeta:
         self.__creationDate = creationDate
         self.foldersList = foldersList
         self.__totalSize = totalSize
-
+        
     #METHODS
         
     def addFileToCarpet(self, fichero):

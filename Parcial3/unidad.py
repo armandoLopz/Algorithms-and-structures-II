@@ -19,6 +19,10 @@ class unidad:
 
     #GETTERS 
     
+    def getFolderList(self):
+
+        return self.__foldersList
+    
     def getIdUnidad(self):
 
         return self.__id

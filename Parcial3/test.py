@@ -23,6 +23,8 @@ un1 = unidad.unidad(1,"C",1024, 350, "SSD", listFolders)
 #print("ARCHIVOS DE LA CARPETA: ")
 #print(ca.contentFolder())
 
+comando = comando.comando(1,"comando dir", "Describe los archivos que hay en la unidad ", "ADMIN")
+
 print("COMANDO DIR ")
 
-un1.contentUnit()
+print(comando.commandDir(un1))
