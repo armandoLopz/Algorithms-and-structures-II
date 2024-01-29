@@ -6,6 +6,11 @@ class comando:
         self.__nameCommand = nameCommand
         self.__description = description
         self.__requiredRole = requiredRole
+
+    #METHODS
+    
+    #def dirCommnand(self, unidad):
+
     
     #GETTERS 
     

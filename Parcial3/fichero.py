@@ -10,6 +10,12 @@ class fichero:
         self.__modificationDate = modificationDate
         self.__content = content
 
+    #METHODS
+        
+    def showDetailsFile(self):
+
+        print(f"Nombre:{self.__name}\nTipo de extension: {self.__extension}\nTamaño: {self.__size}\nFecha de modificación:{self.__modificationDate}")
+
     #GETTERS
 
     def getIdFichero(self):

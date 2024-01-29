@@ -1,15 +1,26 @@
 class carpeta:
 
-    def __init__(self, id, name, totalSize, creationDate, fileList = []):
+    def __init__(self, id, name, totalSize, creationDate, fileList = [], foldersList = []):
 
         self.__id = id
         self.__name = name
         self.__fileList = fileList
         self.__creationDate = creationDate
-        #self.foldersList = foldersList
+        self.foldersList = foldersList
         self.__totalSize = totalSize
 
     
+    #METHODS
+    def addFileToCarpet(self, fichero):
+
+        self.__fileList.append(fichero)
+    
+    def contentFolder(self):
+        
+        for fichero in self.__fileList:
+
+            fichero.showDetailsFile()
+
     #GETTERS 
     
     def getIdCarpeta(self):
@@ -49,5 +60,7 @@ class carpeta:
     def setTotalSizeCarpeta(self, totalSize):
 
         self.__totalSize = totalSize
-
     
+    def setFileList(self, fileList = []):
+
+        self.__fileList = fileList

@@ -1,6 +1,6 @@
 class unidad:
 
-    def __init__(self, id, name, totalCapacity, avaibleStorage, typeUnit, foldersList):
+    def __init__(self, id, name, totalCapacity, avaibleStorage, typeUnit, foldersList = []):
 
         self.__id = id
         self.__name = name
@@ -8,6 +8,8 @@ class unidad:
         self.__avaibleStorage = avaibleStorage
         self.__foldersList = foldersList
         self.__typeUnit = typeUnit
+
+    #METHODS
 
     #GETTERS 
     
