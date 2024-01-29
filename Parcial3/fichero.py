@@ -1,6 +1,6 @@
 class fichero:
 
-    def __init__(self, id, name, size, extension, creationDate, modificationDate, content):
+    def __init__(self, id, name, size, extension, creationDate,content, modificationDate = None):
 
         self.__id = id
         self.__name = name

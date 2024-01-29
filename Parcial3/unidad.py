@@ -10,6 +10,12 @@ class unidad:
         self.__typeUnit = typeUnit
 
     #METHODS
+        
+    def contentUnit(self):
+
+        for carpeta in self.__foldersList:
+            print(f"CONTENIDO DE LA CARPETA: {carpeta.getNameCarpeta()}")
+            carpeta.contentFolder()
 
     #GETTERS 
     

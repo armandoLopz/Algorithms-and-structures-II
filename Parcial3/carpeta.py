@@ -9,18 +9,22 @@ class carpeta:
         self.foldersList = foldersList
         self.__totalSize = totalSize
 
-    
     #METHODS
+        
     def addFileToCarpet(self, fichero):
 
         self.__fileList.append(fichero)
     
     def contentFolder(self):
-        
+    
         for fichero in self.__fileList:
 
             fichero.showDetailsFile()
-
+            print("")
+        
+        #ACOMODAR UN RETURN
+        return ""
+    
     #GETTERS 
     
     def getIdCarpeta(self):

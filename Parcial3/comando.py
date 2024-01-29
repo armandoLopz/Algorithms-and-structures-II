@@ -8,9 +8,12 @@ class comando:
         self.__requiredRole = requiredRole
 
     #METHODS
-    
-    #def dirCommnand(self, unidad):
+        
+    def commandDir(self, unidad):
 
+        for unidad in unidad:
+
+            unidad.contentUnit()
     
     #GETTERS 
     
