@@ -67,4 +67,6 @@ class unidad:
 
         self.__avaibleStorage = avaibleStorage
 
-    #FALTA SET FOLDERLIST
+    def setFolderList(self, foldersList = []):
+
+        self.__foldersList = foldersList

@@ -43,9 +43,13 @@ class carpeta:
 
         return self.__creationDate
     
-    """def getFileListCarpeta(self):
+    def getFileListCarpeta(self):
 
-        return self.fileList"""
+        return self.fileList
+    
+    def getFolderList(self):
+
+        return self.getFolderList
     
     #SETTERS 
 
@@ -68,3 +72,8 @@ class carpeta:
     def setFileList(self, fileList = []):
 
         self.__fileList = fileList
+    
+    def setFolderList(self, foldersList = []):
+
+        self.getFolderList = foldersList
+        

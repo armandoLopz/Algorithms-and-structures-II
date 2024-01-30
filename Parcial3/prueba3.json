@@ -1,0 +1,11 @@
+{
+    "archivo3":{
+    "id" : 3,
+    "name": "Prueba de archivo 3",
+    "size": 0,
+    "extension": "",
+    "creationDate": "",
+    "modificationDate": "None",
+    "content": "CONTENIDO DEL ARCHIVO DE PRUEBA DEL TERCER OBJETO"
+    }  
+}
