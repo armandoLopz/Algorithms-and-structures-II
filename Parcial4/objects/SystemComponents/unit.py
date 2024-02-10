@@ -13,7 +13,7 @@ class unit:
         
     def contentUnit(self):
         
-        contUnit = ""
+        #contUnit = ""
 
         for folder in self.__foldersList:
 

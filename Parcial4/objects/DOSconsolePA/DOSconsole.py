@@ -1,20 +1,18 @@
 from . import listCommand, validationCommands
 class DOSConsole:
 
-    def __init__(self, unit):
+    def __init__(self, unit, user):
 
         self.__validationCommands = validationCommands.validationCommands()
         self.__unit = unit
         self.__commands = listCommand
-        #self.user = user.user()
 
     #lista de comados disponibles, cuando se agregue un nuevo comando, se carga e esta
         self.__commands = {
             
         "dir": self.__commands.DirCommand,
         "exit": self.__commands.ExitCommand,
-        "help": self.__commands.HelpCommand,
-        #"CreateUser": self.user.createUser()
+        "help": self.__commands.HelpCommand
         
         }
 

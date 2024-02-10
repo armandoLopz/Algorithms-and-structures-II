@@ -30,6 +30,7 @@ def createUser():
     
         userCreate = True
         return userCreate, us.user(idUser,nameUser,lastNameUser,cedulaUser, rol="invitado")
+    
     else:
         return userCreate, None
       
@@ -44,14 +45,14 @@ while userCreate == False:
         userCreate, user = createUser()
     
     except:
-        print("ENTRO EN LA EXCEPCION")
+        
         print("Verifique los datos ingresados e inténtelo nuevamente")
 
 #CARGA DE ARCHIVOS
-with open('Parcial3\Archivo1.json', 'r') as archivo:
+with open('Parcial3\prueba.json', 'r') as archivo:
 
             #Se obtiene la ruta y size del archivo JSON para definir su valor
-            fileRoute = "Parcial3\Archivo1.json"
+            fileRoute = "Parcial3\prueba.json"
             sizeFileBytes = os.path.getsize(fileRoute)
             SizeFileToKB = sizeFileBytes / 1024
 
@@ -66,10 +67,10 @@ with open('Parcial3\Archivo1.json', 'r') as archivo:
             #Se define el valor de la extension del archivo
             datosJson["archivo1"]["extension"] = extensionFile
 
-with open('Parcial3\Archivo2.json', 'r') as archivo:
+with open('Parcial3\prueba2.json', 'r') as archivo:
 
             #Se obtiene la ruta y size del archivo JSON para definir su valor
-            sizeFileBytes = os.path.getsize("Parcial3\Archivo2.json")
+            sizeFileBytes = os.path.getsize("Parcial3\prueba2.json")
             SizeFileToKB = sizeFileBytes / 1024
 
             datosJson2 = json.load(archivo)
@@ -79,10 +80,10 @@ with open('Parcial3\Archivo2.json', 'r') as archivo:
             #Se define el valor de la extension del archivo
             datosJson2["archivo2"]["extension"] = extensionFile
 
-with open('Parcial3\Archivo3.json', 'r') as archivo:
+with open('Parcial3\prueba3.json', 'r') as archivo:
 
             #Se obtiene la ruta y size del archivo JSON para definir su valor
-            sizeFileBytes = os.path.getsize("Parcial3\Archivo3.json")
+            sizeFileBytes = os.path.getsize("Parcial3\prueba3.json")
             SizeFileToKB = sizeFileBytes / 1024
 
             datosJson3 = json.load(archivo)
@@ -92,10 +93,10 @@ with open('Parcial3\Archivo3.json', 'r') as archivo:
             #Se define el valor de la extension del archivo
             datosJson3["archivo3"]["extension"] = extensionFile
 
-with open('Parcial3\Archivo4.json', 'r') as archivo:
+with open('Parcial3\prueba4.json', 'r') as archivo:
 
             #Se obtiene la ruta y size del archivo JSON para definir su valor
-            sizeFileBytes = os.path.getsize("Parcial3\Archivo4.json")
+            sizeFileBytes = os.path.getsize("Parcial3\prueba4.json")
             SizeFileToKB = sizeFileBytes / 1024
 
             datosJson4 = json.load(archivo)
@@ -105,10 +106,10 @@ with open('Parcial3\Archivo4.json', 'r') as archivo:
             #Se define el valor de la extension del archivo
             datosJson4["archivo4"]["extension"] = extensionFile
 
-with open('Parcial3\Archivo5.json', 'r') as archivo:
+with open('Parcial3\prueba5.json', 'r') as archivo:
 
             #Se obtiene la ruta y size del archivo JSON para definir su valor
-            sizeFileBytes = os.path.getsize("Parcial3\Archivo5.json")
+            sizeFileBytes = os.path.getsize("Parcial3\prueba5.json")
             SizeFileToKB = sizeFileBytes / 1024
 
             datosJson5 = json.load(archivo)
