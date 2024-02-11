@@ -1,12 +1,12 @@
 class folder:
 
-    def __init__(self, id, name, totalSize, creationDate, fileList = [], foldersList = []):
+    def __init__(self, id, name, totalSize, creationDate, fileList, foldersList):
 
         self.__id = id
         self.__name = name
         self.__fileList = fileList
         self.__creationDate = creationDate
-        self.__FolderList = foldersList
+        self.__folderList = foldersList
         self.__totalSize = totalSize
         
     #METHODS
@@ -27,13 +27,19 @@ class folder:
 
     def contentFolder(self):
 
-        cont = ""
-    
-        for file in self.__fileList:
+        if self.__folderList == None:
 
-            cont += file.showDetailsFile() + "\n" + "\n"
+            return self.__fileList.recorrer()
         
-        return cont
+        if self.__folderList.estaVacia() == False:
+
+            return self.__fileList.recorrer()
+        
+        return self.__fileList.recorrer()
+        
+    def contentSubFolder(self):
+
+        self.__FolderList.recorrer()
     
     #GETTERS 
     
@@ -59,7 +65,7 @@ class folder:
     
     def getFolderList(self):
 
-        return self.__FolderList
+        return self.__folderList
     
     #SETTERS 
 
@@ -79,11 +85,11 @@ class folder:
 
         self.__totalSize = totalSize
     
-    def setFileList(self, fileList = []):
+    def setFileList(self, fileList):
 
         self.__fileList = fileList
     
-    def setFolderList(self, foldersList = []):
+    def setFolderList(self, foldersList):
 
         self.__FolderList = foldersList
         

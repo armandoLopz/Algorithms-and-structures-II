@@ -8,9 +8,18 @@ class ListaEnlazada:
     def __init__(self):
         self.cabeza = None
         self.longitud = 0
+        self.recorrida = False
 
     #Agregar como metodo que se visualicen los objetos dentroo de la LINKEDLIST 
+    def contentLinkedList(self):
 
+        for folder in self.__iter__():
+
+            print("Contenido de la carpeta " + folder.getNameFolder())
+            print(folder.contentFolder())
+        
+        return ""
+    
     def __len__(self):
 
         return self.longitud
@@ -20,7 +29,8 @@ class ListaEnlazada:
         while actual:
             yield actual.valor
             actual = actual.siguiente
-            
+        self.recorrida = True
+        
     def agregar(self, valor):
         nuevo_nodo = Nodo(valor)
 
@@ -115,7 +125,8 @@ class ListaEnlazada:
         for i in range(indice - 1):
 
             actual = actual.siguiente
-            valor = actual.siguiente.valor
-            actual.siguiente = actual.siguiente.siguiente
-            self.longitud -= 1
-            return valor
+            
+        valor = actual.siguiente.valor
+        actual.siguiente = actual.siguiente.siguiente
+        self.longitud -= 1
+        return valor

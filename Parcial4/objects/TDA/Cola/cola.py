@@ -17,7 +17,6 @@ class Cola:
 
         if self.esta_vacia():
             self.frente = nodo_nuevo
-
         else:
             self.fin.siguiente = nodo_nuevo
         self.fin = nodo_nuevo
@@ -33,6 +32,21 @@ class Cola:
                 self.fin = None
             return valor_eliminado
         
+    def longitud(self):
+        
+        contador = 0
+        nodo_actual = self.frente
+
+        while nodo_actual is not None:
+            contador += 1
+            nodo_actual = nodo_actual.siguiente
+
+        return contador
+
+    def vaciar(self):
+        self.frente = None
+        self.fin = None
+        
     def ver_frente(self):
         
         if self.esta_vacia():
@@ -44,9 +58,15 @@ class Cola:
         if self.esta_vacia():
             print("La cola está vacía")
         else:
-            self._recorrer_aux(self.frente)
+            return self._recorrer_aux(self.frente)
 
     def _recorrer_aux(self, nodo):
+        
+        file = ""
+
         if nodo is not None:
-            print(nodo.valor)
+            
+            print(nodo.valor.showDetailsFile())
             self._recorrer_aux(nodo.siguiente)
+        
+        return file 

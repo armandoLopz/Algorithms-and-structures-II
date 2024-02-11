@@ -14,7 +14,7 @@ class file:
         
     def showDetailsFile(self):
 
-        return f"Nombre:{self.__name}\nTipo de extension: {self.__extension}\nTamaño: {self.__size}\nFecha de modificación:{self.__modificationDate}"
+        return f"\n      Nombre: {self.__name}\n      Tipo de extension: {self.__extension}\n      Tamaño: {self.__size}\n      Fecha de modificación: {self.__modificationDate}\n"
 
     #GETTERS
 

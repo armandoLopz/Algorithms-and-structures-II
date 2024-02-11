@@ -9,7 +9,7 @@ class Pila:
         
         self.tope = None
 
-    def esta_vacia(self):
+    def estaVacia(self):
         
         return self.tope is None
     
@@ -37,7 +37,7 @@ class Pila:
         
     def recorrer(self):
 
-        if self.esta_vacia():
+        if self.estaVacia():
             print("La pila está vacía")
         else:
             self._recorrer_aux(self.tope)
@@ -45,5 +45,6 @@ class Pila:
     def _recorrer_aux(self, nodo):
         
         if nodo is not None:
-            print(nodo.valor.nombre)
+            print("Carpeta: "+ nodo.valor.getNameFolder())
+            print(nodo.valor.contentFolder())
             self._recorrer_aux(nodo.siguiente)

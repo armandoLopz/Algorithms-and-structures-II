@@ -153,3 +153,5 @@ print(autos.index(carro1)) # 0
 autos.pop()
 # Mostramos los valores de la lista
 print(list(autos)) # [carro1, carro4]
+
+print(autos.__iter__())

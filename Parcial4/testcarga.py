@@ -1,6 +1,6 @@
 import json
 import os 
-from uploadContent import upload
+from Parcial4.uploadContent import r
 from objects.SystemComponents import file
 
 pathFile = r"Parcial4\contFiles\archivo.json"

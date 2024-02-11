@@ -1,6 +1,7 @@
+from . import folder as folder
 class unit: 
         
-    def __init__(self, id, name, totalCapacity, avaibleStorage, typeUnit, foldersList = []):
+    def __init__(self, id, name, totalCapacity, avaibleStorage, typeUnit, foldersList):
 
         self.__id = id
         self.__name = name
@@ -12,15 +13,8 @@ class unit:
     #METHODS
         
     def contentUnit(self):
-        
-        #contUnit = ""
 
-        for folder in self.__foldersList:
-
-            #contUnit += "CONTENIDO DE LA CARPETA: " + folder.getNameFolder() + "\n" + folder.contentFolder() + "\n"
-            print("CONTENIDO DE LA CARPETA: "+ folder.getNameFolder() + "\n" + folder.contentFolder() + "\n")
-
-        return ""
+        return self.__foldersList.contentLinkedList()
     
     #GETTERS 
     
@@ -72,6 +66,6 @@ class unit:
 
         self.__avaibleStorage = avaibleStorage
 
-    def setFolderList(self, foldersList = []):
+    def setFolderList(self, foldersList):
 
         self.__foldersList = foldersList

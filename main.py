@@ -1,9 +1,3 @@
-def sum():
-    
-    return "soy el metodo "
-
-suma = sum
-
-for i in range(10):
-
-    print(suma())
+comando = "C: /DOCUMENTOS/ ARCHIVO"
+print(comando.split())
+print(comando.__len__())

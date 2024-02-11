@@ -52,6 +52,15 @@ class Cola:
             print(nodo.valor.getName())
             self._recorrer_aux(nodo.siguiente)
 
+    def longitud(self):
+        
+        contador = 0
+        nodo_actual = self.frente
+
+        while nodo_actual is not None:
+            contador += 1
+            nodo_actual = nodo_actual.siguiente
+
 class Mascota:
     def __init__(self, nombre, especie, edad):
         
@@ -67,10 +76,21 @@ class Mascota:
 mascota1 = Mascota("Luna", "Perro", 3)
 mascota2 = Mascota("Simba", "Gato", 5)
 mascota3 = Mascota("Bolt", "Perro", 2)
+
+listaMascotas  = [mascota1,mascota2,mascota3]
 # Creamos una cola y agregamos las mascotas a la cola
 cola_mascotas = Cola()
-cola_mascotas.agregar(mascota1)
-cola_mascotas.agregar(mascota2)
-cola_mascotas.agregar(mascota3)
+#cola_mascotas.agregar(mascota1)
+#cola_mascotas.agregar(mascota2)
+#cola_mascotas.agregar(mascota3)
+
+for mascota in listaMascotas:
+
+    cola_mascotas.agregar(mascota)
+
 # Imprimimos todas las mascotas en la cola
+cola_mascotas.recorrer()
+print("LA LONGITUD ES " , cola_mascotas.longitud())
+cola_mascotas.eliminar()
+print("RECORRE LA COLA DESPUES DE ELIMINAR LOS ARCHIVOS")
 cola_mascotas.recorrer()
