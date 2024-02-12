@@ -40,11 +40,15 @@ class Pila:
         if self.estaVacia():
             print("La pila está vacía")
         else:
-            self._recorrer_aux(self.tope)
+            return self._recorrer_aux(self.tope)
 
     def _recorrer_aux(self, nodo):
-        
+
+        file = ""
+
         if nodo is not None:
-            print("Carpeta: "+ nodo.valor.getNameFolder())
+            print("                 Subcarpeta: " + nodo.valor.getNameFolder())
             print(nodo.valor.contentFolder())
             self._recorrer_aux(nodo.siguiente)
+        
+        return file

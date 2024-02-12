@@ -15,7 +15,7 @@ class ListaEnlazada:
 
         for folder in self.__iter__():
 
-            print("Contenido de la carpeta " + folder.getNameFolder())
+            print("Contenido de la carpeta " + folder.getNameFolder().upper())
             print(folder.contentFolder())
         
         return ""

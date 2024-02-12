@@ -67,6 +67,6 @@ class Cola:
         if nodo is not None:
             
             print(nodo.valor.showDetailsFile())
-            self._recorrer_aux(nodo.siguiente)
+            return self._recorrer_aux(nodo.siguiente)
         
         return file 

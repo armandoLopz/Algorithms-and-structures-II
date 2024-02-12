@@ -11,11 +11,13 @@ class upload:
     def __init__(self, unit):
 
         self.__file = file.file
-        self.__folder = folder.folder
         self.__unit = unit
+        self.__folder = folder.folder
+
+        self.__colaJson = cola.Cola()
+        self.__colaTxt = cola.Cola()
 
         self.__pila = pila.Pila()
-        self.__cola = cola.Cola()
         self.__linkedlist = linkedList.ListaEnlazada()
 
     #Creacion de las funciones que se encargan de la carga de archivos JSON y Txt
@@ -41,9 +43,10 @@ class upload:
     
     #Creacion de las funciones que se encargan de la instanciacion de de los archivos 
                 
-    def createFiles(self):
+    def createFilesJson(self):
 
         contentJsonFiles = self.datosJson()
+        #Inicializa la cola que se va a utilizar y devolver en el metodo
 
         listfiles = [
             contentJsonFiles["archivo1"],
@@ -65,12 +68,14 @@ class upload:
                 data["modificationDate"]
             )
 
-            self.__cola.agregar(file)
-        return self.__cola
+            self.__colaJson.agregar(file)
+        
+        return self.__colaJson
     
     def createFilesTxt(self):
 
         contentJsonFiles = self.datosJsonTxt()
+        #Inicializa la cola que se va a utilizar y devolver en el metodo
 
         listfiles = [
             contentJsonFiles["archivo1"],
@@ -92,41 +97,41 @@ class upload:
                 data["modificationDate"]
             )
 
-            self.__cola.agregar(file)
-        return self.__cola
+            self.__colaTxt.agregar(file)
+
+        return self.__colaTxt
     
     #Creacion de las funciones que se encargan de la instanciacion de las carpetas 
 
     def createsubFoldersTxt(self):
 
-        file = self.createFilesTxt()
+        file1 = self.createFilesTxt()
 
-        folder1 = self.__folder(1,"Archivos_TXT", 400, datetime.datetime.now, file, None)
-        folder2 = self.__folder(2,"Anotaciones_Viajes", 300, datetime.datetime.now, file, None)
-        folder3 = self.__folder(3,"Contenido_audiovisual", 1400, datetime.datetime.now, file, None)
-        folder4 = self.__folder(4,"Clases_curso", 1500, datetime.datetime.now, file, None)
+        folder1 = self.__folder(1,"Archivos_TXT", 400, datetime.datetime.now, file1, None)
+        folder2 = self.__folder(2,"Anotaciones_Viajes", 300, datetime.datetime.now, file1, None)
+        #folder3 = self.__folder(3,"Contenido_audiovisual", 1400, datetime.datetime.now, file, None)
+        #folder4 = self.__folder(4,"Clases_curso", 1500, datetime.datetime.now, file, None)
 
-        listFolders = [folder1, folder2, folder3, folder4]
-
+        listFolders = [folder1, folder2]
+        
         for folder.folder in listFolders:
 
             self.__pila.agregar(folder.folder)
-        
-        print(self.__pila.recorrer())
+
         return self.__pila
     
     def createFolder(self):
         
-        file = self.createFiles()
         subFolders = self.createsubFoldersTxt()
+        file = self.createFilesJson()
 
         folder1 = self.__folder(1,"Archivos JSON", 400, datetime.datetime.now, file, subFolders)
         folder2 = self.__folder(2,"Imagenes Familia", 300, datetime.datetime.now, file, subFolders)
-        folder3 = self.__folder(3,"Contenido PDF", 1400, datetime.datetime.now, file, subFolders)
+        folder3 = self.__folder(3,"Contenido PDF", 1400, datetime.datetime.now, file, None)
         folder4 = self.__folder(4,"Clases universidad", 1500, datetime.datetime.now, file, subFolders)
 
         listFolders = [folder1, folder2, folder3, folder4]
-
+        
         for folder.folder in listFolders:
 
             self.__linkedlist.agregar(folder.folder)

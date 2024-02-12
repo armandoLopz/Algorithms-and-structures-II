@@ -21,8 +21,7 @@ while userCreate == False:
 unit = unit_module.unit
 #Carga de archivos 
 uploadObjects = upload.upload(unit)
-uploadObjects.createsubFoldersTxt()
 
 #Inicializacion de la DOSconsole
-#dosConsole = dc.DOSConsole(uploadObjects.createUnit(), user)
-#dosConsole.run()
+dosConsole = dc.DOSConsole(uploadObjects.createUnit(), user)
+dosConsole.run()
