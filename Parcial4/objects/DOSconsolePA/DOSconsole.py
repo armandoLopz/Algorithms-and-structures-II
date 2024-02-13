@@ -38,11 +38,15 @@ class DOSConsole:
     #Se busca si el comando existe en la lista definida previamente
                 if comando in self.__commands:
                     
+                    if comando == "dir":
+
+                        self.__commands[comando].execute(self.__unit)
+                        
                     if comando == "cd":
                         
                         if self.__validationCommands.methodExecute():
                             
-                            return self.__commands[comando].execute(args)
+                            self.__commands[comando].execute()
                     #self.__commands[comando].execute(self.__unit)
         #Si el comando existe se llama en la lista definida anteriormente
         #la lista es un diccionario donde cada clave corresponde a un comando

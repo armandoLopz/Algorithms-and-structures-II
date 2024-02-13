@@ -23,13 +23,12 @@ class HelpCommand(command.command):
         print("help - Muestra esta ayuda")
 
 class Cd(command.command):
-    def execute(args):
-
+    def execute():
         return print("COMANDO CD EJECUTANDOSE")
         
 class Mkdir(command.command):
 
-    def execute(self, args):
+    def execute():
 
         return True
         
