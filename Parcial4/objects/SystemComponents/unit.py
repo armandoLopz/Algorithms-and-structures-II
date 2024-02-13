@@ -1,4 +1,3 @@
-from . import folder as folder
 class unit: 
         
     def __init__(self, id, name, totalCapacity, avaibleStorage, typeUnit, foldersList):

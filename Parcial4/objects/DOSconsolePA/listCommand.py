@@ -24,12 +24,14 @@ class HelpCommand(command.command):
 
 class Cd(command.command):
     def execute():
+        #AGREGAR LAS ACCIONES QUE SE PUEDEN HACER EN EL DIRECTORIO ESTABLECIDO
         return print("COMANDO CD EJECUTANDOSE")
         
 class Mkdir(command.command):
 
-    def execute():
-
-        return True
+    def execute(list, folder):
+        list.agregar(folder)
+        
+        return print("La carpeta ha sido creada con exito")
         
 

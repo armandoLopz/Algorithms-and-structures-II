@@ -1,4 +1,6 @@
 from . import listCommand, validationCommands
+from objects.SystemComponents.folder import folder
+from objects.TDA.LinkedList.linkedList import ListaEnlazada 
 class DOSConsole:
 
     def __init__(self, unit, user):
@@ -13,7 +15,8 @@ class DOSConsole:
         "dir": self.__commands.DirCommand,
         "exit": self.__commands.ExitCommand,
         "help": self.__commands.HelpCommand,
-        "cd": self.__commands.Cd
+        "cd": self.__commands.Cd,
+        "mkdir" : self.__commands.Mkdir
         
         }
 
@@ -38,20 +41,36 @@ class DOSConsole:
     #Se busca si el comando existe en la lista definida previamente
                 if comando in self.__commands:
                     
+                    #EJECUTA EL COMANDO DIR
                     if comando == "dir":
 
                         self.__commands[comando].execute(self.__unit)
-                        
+
+                    #EJECUTA EL COMANDO CD
                     if comando == "cd":
                         
+                        #MOSTRAR LAS DISTINTAS ACCIONES QUE SE PUEDEN REALIZAR
                         if self.__validationCommands.methodExecute():
+
+                            return self.__commands[comando].execute(args)
+                    
+                    #EJECUTA EL COMANDO MKDIR
+                    if comando == "mkdir":
+
+                        folder1 = folder
+                        linkedList = ListaEnlazada
+                        folder1, linkedList = self.__validationCommands.methodExecute()
+
+                        if folder1 is None and linkedList is None:
+
+                            print("Ingrese una ruta valida para crear una nueva carpeta")
+                        
+                        if folder1 is not None and linkedList is not None:
                             
-                            self.__commands[comando].execute()
-                    #self.__commands[comando].execute(self.__unit)
-        #Si el comando existe se llama en la lista definida anteriormente
-        #la lista es un diccionario donde cada clave corresponde a un comando
-        #y cada valor de ese diccionario es un objeto del comando
-        #después se llama execute de ese objeto para ejecutar el comando
+                            self.__commands[comando].execute(linkedList, folder1)
+                        
+                        
+                            
                         
                 else:
                     print(f"Comando desconocido: {comando}")

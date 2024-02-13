@@ -27,10 +27,16 @@ class folder:
 
     def contentFolder(self):
 
+        #Entra en el condicional si no posee archivos ni subcarpetas
+        if self.__fileList == None and self.__folderList == None:
+
+            return ""
+        
         #Verifica si La carpeta posee subcarpeta
         if self.__folderList == None:
 
             return self.__fileList.recorrer()
+        
 
         #Verifica si la carpeta que se paso como parametro se encuentra vacia
         if self.__folderList.estaVacia() == False:
@@ -94,4 +100,3 @@ class folder:
     def setFolderList(self, foldersList):
 
         self.__folderList = foldersList
-        
