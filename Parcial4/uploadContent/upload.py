@@ -107,8 +107,8 @@ class upload:
 
         file1 = self.createFilesTxt()
 
-        folder1 = self.__folder(1,"Archivos_TXT", 400, datetime.datetime.now, file1, None)
-        folder2 = self.__folder(2,"Anotaciones_Viajes", 300, datetime.datetime.now, file1, None)
+        folder1 = self.__folder(1,"ArchivosTXT", 400, datetime.datetime.now, file1, None)
+        folder2 = self.__folder(2,"AnotacionesViajes", 300, datetime.datetime.now, file1, None)
         #folder3 = self.__folder(3,"Contenido_audiovisual", 1400, datetime.datetime.now, file, None)
         #folder4 = self.__folder(4,"Clases_curso", 1500, datetime.datetime.now, file, None)
 
@@ -125,9 +125,9 @@ class upload:
         subFolders = self.createsubFoldersTxt()
         file = self.createFilesJson()
 
-        folder1 = self.__folder(1,"Archivos JSON", 400, datetime.datetime.now, file, subFolders)
-        folder2 = self.__folder(2,"Imagenes Familia", 300, datetime.datetime.now, file, subFolders)
-        folder3 = self.__folder(3,"Contenido PDF", 1400, datetime.datetime.now, file, None)
+        folder1 = self.__folder(1,"ArchivosJSON", 400, datetime.datetime.now, file, subFolders)
+        folder2 = self.__folder(2,"ImagenesFamilia", 300, datetime.datetime.now, file, subFolders)
+        folder3 = self.__folder(3,"ContenidoPDF", 1400, datetime.datetime.now, file, None)
         folder4 = self.__folder(4,"Clases universidad", 1500, datetime.datetime.now, file, subFolders)
 
         listFolders = [folder1, folder2, folder3, folder4]

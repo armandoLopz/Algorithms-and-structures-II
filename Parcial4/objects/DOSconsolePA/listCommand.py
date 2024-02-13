@@ -23,17 +23,9 @@ class HelpCommand(command.command):
         print("help - Muestra esta ayuda")
 
 class Cd(command.command):
-    def execute(self, args):
+    def execute(args):
 
-        print("Se esta ejecutando el comando CD DESDE EL COMANDO")
-        
-        """amountArgs = len(args)
-
-        print(amountArgs)
-
-        if amountArgs == 3:
-            return True"""
-        return args
+        return print("COMANDO CD EJECUTANDOSE")
         
 class Mkdir(command.command):
 

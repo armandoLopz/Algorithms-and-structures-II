@@ -46,6 +46,14 @@ class Cola:
     def vaciar(self):
         self.frente = None
         self.fin = None
+    
+    def obtener_objetos(self):
+        objetos = []
+        nodo_actual = self.frente
+        while nodo_actual is not None:
+            objetos.append(nodo_actual.valor)
+            nodo_actual = nodo_actual.siguiente
+        return objetos
         
     def ver_frente(self):
         

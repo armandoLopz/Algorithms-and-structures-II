@@ -31,8 +31,8 @@ class DOSConsole:
 
                 #Se le da valor a lOS parametroS del objeto que valida los comandos
                 self.__validationCommands.setUnit(self.__unit)
-                self.__validationCommands.setNameCommand(comando.lower())
-                self.__validationCommands.settSizeCommand(amountInput)
+                self.__validationCommands.setNameCommand(comando)
+                self.__validationCommands.setSizeCommand(amountInput)
                 self.__validationCommands.setArgs(args)
 
     #Se busca si el comando existe en la lista definida previamente
@@ -40,7 +40,9 @@ class DOSConsole:
                     
                     if comando == "cd":
                         
-                        return True
+                        if self.__validationCommands.methodExecute():
+                            
+                            return self.__commands[comando].execute(args)
                     #self.__commands[comando].execute(self.__unit)
         #Si el comando existe se llama en la lista definida anteriormente
         #la lista es un diccionario donde cada clave corresponde a un comando
