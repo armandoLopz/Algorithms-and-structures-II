@@ -15,9 +15,18 @@ class upload:
         self.__folder = folder.folder
 
         self.__colaJson = cola.Cola()
+        self.__colaJson2 = cola.Cola()
+        self.__colaJson3 = cola.Cola()
+        self.__colaJson4 = cola.Cola()
+
         self.__colaTxt = cola.Cola()
+        self.__colaTxt2 = cola.Cola()
 
         self.__pila = pila.Pila()
+        self.__pila2 = pila.Pila()
+        self.__pila3 = pila.Pila()
+        self.__pila4 = pila.Pila()
+
         self.__linkedlist = linkedList.ListaEnlazada()
 
     #Creacion de las funciones que se encargan de la carga de archivos JSON y Txt
@@ -69,8 +78,11 @@ class upload:
             )
 
             self.__colaJson.agregar(file)
+            self.__colaJson2.agregar(file)
+            self.__colaJson3.agregar(file)
+            self.__colaJson4.agregar(file)
         
-        return self.__colaJson
+        return self.__colaJson, self.__colaJson2, self.__colaJson3, self.__colaJson4
     
     def createFilesTxt(self):
 
@@ -98,37 +110,48 @@ class upload:
             )
 
             self.__colaTxt.agregar(file)
+            self.__colaTxt2.agregar(file)
 
-        return self.__colaTxt
+        return self.__colaTxt, self.__colaTxt2
     
     #Creacion de las funciones que se encargan de la instanciacion de las carpetas 
 
     def createsubFoldersTxt(self):
 
-        file1 = self.createFilesTxt()
+        file1, file2 = self.createFilesTxt()
 
         folder1 = self.__folder(1,"ArchivosTXT", 400, datetime.datetime.now, file1, None)
-        folder2 = self.__folder(2,"AnotacionesViajes", 300, datetime.datetime.now, file1, None)
-        #folder3 = self.__folder(3,"Contenido_audiovisual", 1400, datetime.datetime.now, file, None)
-        #folder4 = self.__folder(4,"Clases_curso", 1500, datetime.datetime.now, file, None)
+        folder2 = self.__folder(2,"AnotacionesViajes", 300, datetime.datetime.now, file2, None)
 
         listFolders = [folder1, folder2]
         
         for folder.folder in listFolders:
 
             self.__pila.agregar(folder.folder)
+            self.__pila2.agregar(folder.folder)
+            self.__pila3.agregar(folder.folder)
+            self.__pila4.agregar(folder.folder)
 
-        return self.__pila
+        return self.__pila, self.__pila2, self.__pila3, self.__pila4
     
     def createFolder(self):
         
-        subFolders = self.createsubFoldersTxt()
-        file = self.createFilesJson()
+        file4, file1, file2, file3 = self.createFilesJson()  
+        subFolders1, subFolders2, subFolders3, subFolders4 = self.createsubFoldersTxt()
 
-        folder1 = self.__folder(1,"ArchivosJSON", 400, datetime.datetime.now, file, subFolders)
-        folder2 = self.__folder(2,"ImagenesFamilia", 300, datetime.datetime.now, file, subFolders)
-        folder3 = self.__folder(3,"ContenidoPDF", 1400, datetime.datetime.now, file, None)
-        folder4 = self.__folder(4,"Clases universidad", 1500, datetime.datetime.now, file, subFolders)
+
+        folder1 = self.__folder(1,"ArchivosJSON", 400, datetime.datetime.now, file1, subFolders1)
+        folder2 = self.__folder(2,"ImagenesFamilia", 300, datetime.datetime.now, file2, subFolders2)
+        folder4 = self.__folder(4,"Clases universidad", 1500, datetime.datetime.now, file4, subFolders4)
+
+        #Carpeta que va a recibir una pila vacia
+        folder3 = self.__folder(3,"ContenidoPDF", 1400, datetime.datetime.now, file3, subFolders3)
+
+        
+        file1.vaciar()
+        file2.vaciar()
+        subFolders2.vaciar_pila()
+        file3.vaciar()
 
         listFolders = [folder1, folder2, folder3, folder4]
         

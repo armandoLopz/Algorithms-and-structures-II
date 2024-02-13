@@ -9,20 +9,20 @@ class Cola:
         self.frente = None
         self.fin = None
 
-    def esta_vacia(self):
+    def estaVacia(self):
         return self.frente is None
     
     def agregar(self, valor):
         nodo_nuevo = Nodo(valor)
 
-        if self.esta_vacia():
+        if self.estaVacia():
             self.frente = nodo_nuevo
         else:
             self.fin.siguiente = nodo_nuevo
         self.fin = nodo_nuevo
             
     def eliminar(self):
-        if self.esta_vacia():
+        if self.estaVacia():
             return None
         else:
             valor_eliminado = self.frente.valor
@@ -57,14 +57,14 @@ class Cola:
         
     def ver_frente(self):
         
-        if self.esta_vacia():
+        if self.estaVacia():
             return None
         else:
             return self.frente.valor
         
     def recorrer(self):
-        if self.esta_vacia():
-            print("La cola está vacía")
+        if self.estaVacia():
+            return ""
         else:
             return self._recorrer_aux(self.frente)
 

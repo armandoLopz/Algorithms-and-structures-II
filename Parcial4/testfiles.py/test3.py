@@ -32,6 +32,11 @@ class Pila:
             valor_eliminado = self.tope.valor
             self.tope = self.tope.siguiente
             return valor_eliminado
+    
+    
+    def vaciar_pila(self):
+        while not self.esta_vacia():
+            self.eliminar()
         
     def ver_tope(self):
         if self.esta_vacia():
@@ -73,13 +78,10 @@ pila_mascotas.agregar(mascota2)
 pila_mascotas.agregar(mascota3)
 
 # Imprimimos todas las mascotas en la pila
-pila_mascotas.recorrer()
+print(pila_mascotas.recorrer())
+
+pila_mascotas.vaciar_pila()
 
 print(pila_mascotas.esta_vacia())
 
-list = pila_mascotas.obtener_objetos()
-print(list.__len__())
-
-for Mascota in list:
-
-    print(Mascota.getName())
+print(pila_mascotas.recorrer())

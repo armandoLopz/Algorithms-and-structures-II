@@ -19,9 +19,13 @@ class Pila:
         nodo_nuevo.siguiente = self.tope
         self.tope = nodo_nuevo
     
+    def vaciar_pila(self):
+        while not self.estaVacia():
+            self.eliminar()
+    
     def eliminar(self):
         
-        if self.esta_vacia():
+        if self.estaVacia():
             return None
         else:
             valor_eliminado = self.tope.valor

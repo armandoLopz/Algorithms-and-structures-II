@@ -45,6 +45,8 @@ class folder:
 
             return self.__fileList.recorrer()
         
+        return ""
+        
     def contentSubFolder(self):
         
         return self.__folderList.recorrer()
