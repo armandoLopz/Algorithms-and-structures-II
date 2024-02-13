@@ -9,6 +9,10 @@ class Mascota:
         self.especie = especie
         self.edad = edad
 
+    def getName(self):
+
+        return self.nombre
+
 class Pila:
     def __init__(self):
         self.tope = None
@@ -34,6 +38,14 @@ class Pila:
             return None
         else:
             return self.tope.valor
+    
+    def obtener_objetos(self):
+        objetos = []
+        nodo_actual = self.tope
+        while nodo_actual is not None:
+            objetos.append(nodo_actual.valor)
+            nodo_actual = nodo_actual.siguiente
+        return objetos
 
     def recorrer(self):
         if self.esta_vacia():
@@ -42,9 +54,11 @@ class Pila:
             self._recorrer_aux(self.tope)
 
     def _recorrer_aux(self, nodo):
-        if nodo is not None:
-            print(nodo.valor.nombre)
-            self._recorrer_aux(nodo.siguiente)
+        valores = []
+        while nodo is not None:
+            valores.append(nodo.valor)
+            nodo = nodo.siguiente
+        return valores
 
 # Creamos algunas mascotas
 mascota1 = Mascota("Luna", "Perro", 3)
@@ -54,7 +68,18 @@ mascota3 = Mascota("Ares", "Perro", 2)
 # Creamos una pila y agregamos las mascotas a la pila
 pila_mascotas = Pila()
 
+pila_mascotas.agregar(mascota1)
+pila_mascotas.agregar(mascota2)
+pila_mascotas.agregar(mascota3)
+
 # Imprimimos todas las mascotas en la pila
 pila_mascotas.recorrer()
 
 print(pila_mascotas.esta_vacia())
+
+list = pila_mascotas.obtener_objetos()
+print(list.__len__())
+
+for Mascota in list:
+
+    print(Mascota.getName())

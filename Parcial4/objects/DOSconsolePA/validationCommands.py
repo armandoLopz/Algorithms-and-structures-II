@@ -1,8 +1,13 @@
+from TDA.Cola import cola
+from TDA.LinkedList import linkedList
+from TDA.Pila import pila
+
 class validationCommands: 
     
-    def __init__(self, unit = None, sizecommand = None, args = []):
+    def __init__(self, unit = None, nameCommand = None, sizecommand = None, args = []):
         
         self.__unit = unit
+        self.__nameCommand = nameCommand
         self.__sizecommand = sizecommand
         self.__args = args
 
@@ -11,6 +16,10 @@ class validationCommands:
     def getUnit(self):
 
         return self.__unit
+    
+    def getNameCommand(self):
+
+        return self.__nameCommand
 
     def getSizeCommand(self):
 
@@ -22,6 +31,14 @@ class validationCommands:
        
     #SETTERS
     
+    def setUnit(self, unit):
+
+        self.__unit = unit
+    
+    def setNameCommand(self, nameCommand):
+
+        self.__nameCommand = nameCommand
+
     def settSizeCommand(self, sizecommand):
 
         self.__sizecommand = sizecommand
@@ -30,34 +47,13 @@ class validationCommands:
 
         self.__args = args
     
-    def setUnit(self, unit):
-
-        self.__unit = unit
 
     #Dependiendo de la longitud del comando va a buscar que metodo ejecutar
     #Para evaluar los archivos
          
     def methodExecute(self):
 
-        if self.__sizecommand == 1:
-
-            return 1
-        
-        elif self.__sizecommand == 3:
-
-            #Se valida la unidad 
-
-            if validationCommands.validationUnit(self.__args, self.__unit):
-
-                return 3
-            
-            else:
-
-                print("Unidad no encontrada")
-
-        else:
-
-            return False
+        return True
     
     def validationFiles(args, folder):
 
@@ -72,19 +68,32 @@ class validationCommands:
     def validationFolder(args, unit):
 
         #Validacion de si el archivo ingresado existe en la unidad
-        for folder in unit.getFolderList():
+        lista = unit.getFolderList()
 
+        for folder in lista.__iter__():
+
+            #Evalua si la carpeta que se va a manejar es una carpeta padre
             if args[0].lower() == folder.getNameFolder().lower():
 
                 if validationCommands.validationFiles(folder):
 
                     return True
+                
+            subFolder = folder.getFolderList()
+
+            for folder in subFolder.obtener_objetos():
+                
+                if args[0].lower() == folder.getNameFolder().lower():
+
+                    if validationCommands.validationFiles(folder):
+
+                        return True
 
         return print("Directorio no encontrado")   
     
     def validationUnit(args, unit):
 
-        #Validacion de si la unidad ingresada existe
+        #Validacion de si la unidad ingresada es igual a la que se esta usando
         if args[0].lower() == unit.getNameUnit().lower():
 
             if validationCommands.validationFolder(args[1:], unit):
@@ -93,3 +102,16 @@ class validationCommands:
 
         else:
             return False
+    
+    def FolderIsLinkedList(self, unit):
+
+        linkedList1 = unit.getFolderList()
+
+        if isinstance(linkedList1, linkedList.ListaEnlazada):
+
+            return True
+        
+        else:
+            return False
+
+        

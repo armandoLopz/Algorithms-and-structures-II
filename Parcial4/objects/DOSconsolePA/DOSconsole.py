@@ -12,14 +12,15 @@ class DOSConsole:
             
         "dir": self.__commands.DirCommand,
         "exit": self.__commands.ExitCommand,
-        "help": self.__commands.HelpCommand
+        "help": self.__commands.HelpCommand,
+        "cd": self.__commands.Cd
         
         }
 
 #El metodo run se utiliza para correr la consola e iniciar el programa
     def run(self):
         while True:
-            #try:
+            try:
     #C: Es la unidad actual
                 entrada = input("C:\\> ")
                 partes = entrada.split()
@@ -28,38 +29,29 @@ class DOSConsole:
                 amountInput = len(partes)
                 args = partes[1:]
 
-                #Se le valor a lOS parametroS del objeto que valida los comandos
+                #Se le da valor a lOS parametroS del objeto que valida los comandos
+                self.__validationCommands.setUnit(self.__unit)
+                self.__validationCommands.setNameCommand(comando.lower())
                 self.__validationCommands.settSizeCommand(amountInput)
                 self.__validationCommands.setArgs(args)
-                self.__validationCommands.setUnit(self.__unit)
-                
+
     #Se busca si el comando existe en la lista definida previamente
                 if comando in self.__commands:
-
-                    if self.__validationCommands.methodExecute() == 1:
+                    
+                    if comando == "cd":
                         
-                        #Ejecuta el comando insertado en consola
-                        self.__commands[comando].execute(self.__unit)
-
-                    if(self.__validationCommands.methodExecute() == 3):
-
-    #Si el comando existe se llama en la lista definida anteriormente
-    #la lista es un diccionario donde cada clave corresponde a un comando
-    #y cada valor de ese diccionario es un objeto del comando
-    #después se llama execute de ese objeto para ejecutar el comando
+                        return True
+                    #self.__commands[comando].execute(self.__unit)
+        #Si el comando existe se llama en la lista definida anteriormente
+        #la lista es un diccionario donde cada clave corresponde a un comando
+        #y cada valor de ese diccionario es un objeto del comando
+        #después se llama execute de ese objeto para ejecutar el comando
                         
-                        self.commands[comando].execute(args)
-                        
-                    """else:
-
-                        print("Unidad no encontrada")
-                        print("La unidad disponible en el sistema es " + self.unit.getNameUnit())"""
-
                 else:
                     print(f"Comando desconocido: {comando}")
 
-"""except KeyboardInterrupt:
-                print("\nOperación cancelada por el usuario.")
-                break
-            except Exception as e:
-                print(f"Error: {e}")"""
+            except KeyboardInterrupt:
+                    print("\nOperación cancelada por el usuario.")
+                    break
+            #except Exception as e:
+                    #print(f"Error: {e}")

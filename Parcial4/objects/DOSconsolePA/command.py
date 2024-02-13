@@ -1,4 +1,4 @@
-#clase comanndo del cual todos los comandos heredan
+#clase comando del cual todos los comandos heredan
 class command:
     def __init__(self, nameCommand = None, description = None, requiredRole = None):
 

@@ -27,6 +27,14 @@ class Pila:
             valor_eliminado = self.tope.valor
             self.tope = self.tope.siguiente
             return valor_eliminado
+    
+    def obtener_objetos(self):
+        objetos = []
+        nodo_actual = self.tope
+        while nodo_actual is not None:
+            objetos.append(nodo_actual.valor)
+            nodo_actual = nodo_actual.siguiente
+        return objetos
         
     def ver_tope(self):
         
