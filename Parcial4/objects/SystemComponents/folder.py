@@ -37,7 +37,6 @@ class folder:
 
             return self.__fileList.recorrer()
         
-
         #Verifica si la carpeta que se paso como parametro se encuentra vacia
         if self.__folderList.estaVacia() == False:
 

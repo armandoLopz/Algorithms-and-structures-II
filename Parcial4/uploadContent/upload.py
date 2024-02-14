@@ -18,6 +18,7 @@ class upload:
         self.__colaJson2 = cola.Cola()
         self.__colaJson3 = cola.Cola()
         self.__colaJson4 = cola.Cola()
+        self.__colaJson5 = cola.Cola()
 
         self.__colaTxt = cola.Cola()
         self.__colaTxt2 = cola.Cola()
@@ -26,6 +27,7 @@ class upload:
         self.__pila2 = pila.Pila()
         self.__pila3 = pila.Pila()
         self.__pila4 = pila.Pila()
+        self.__pila5 = pila.Pila()
 
         self.__linkedlist = linkedList.ListaEnlazada()
 
@@ -81,6 +83,7 @@ class upload:
             self.__colaJson2.agregar(file)
             self.__colaJson3.agregar(file)
             self.__colaJson4.agregar(file)
+            self.__colaJson5.agregar(file)
         
         return self.__colaJson, self.__colaJson2, self.__colaJson3, self.__colaJson4
     
@@ -131,34 +134,27 @@ class upload:
             self.__pila2.agregar(folder.folder)
             self.__pila3.agregar(folder.folder)
             self.__pila4.agregar(folder.folder)
+            self.__pila5.agregar(folder.folder)
 
         return self.__pila, self.__pila2, self.__pila3, self.__pila4
     
     def createFolder(self):
         
-        file4, file1, file2, file3 = self.createFilesJson()  
+        file1, file2, file3, file4 = self.createFilesJson()  
         subFolders1, subFolders2, subFolders3, subFolders4 = self.createsubFoldersTxt()
 
 
         folder1 = self.__folder(1,"ArchivosJSON", 400, datetime.datetime.now, file1, subFolders1)
         folder2 = self.__folder(2,"ImagenesFamilia", 300, datetime.datetime.now, file2, subFolders2)
+        folder3 = self.__folder(3,"ContenidoPDF", 1400, datetime.datetime.now, file3, subFolders3)
         folder4 = self.__folder(4,"Clases universidad", 1500, datetime.datetime.now, file4, subFolders4)
 
         #Carpeta que va a recibir una pila vacia
-        folder3 = self.__folder(3,"ContenidoPDF", 1400, datetime.datetime.now, file3, subFolders3)
-
-        
-        file1.vaciar()
-        file2.vaciar()
-        subFolders2.vaciar_pila()
-        file3.vaciar()
-
         listFolders = [folder1, folder2, folder3, folder4]
         
         for folder.folder in listFolders:
 
             self.__linkedlist.agregar(folder.folder)
-
         return self.__linkedlist
     
     #Creacion de la unidad que se ejecutara en la consolaDOS

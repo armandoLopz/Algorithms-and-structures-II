@@ -2,6 +2,8 @@
 #from TDA.LinkedList import linkedList
 #from TDA.Pila import pila
 from objects.SystemComponents.folder import folder
+from objects.SystemComponents.file import file
+import datetime
 
 class validationCommands: 
     
@@ -13,6 +15,7 @@ class validationCommands:
         self.__args = args
 
         self.__folder = folder
+        self.__file = file
     #GETTERS
     
     def getUnit(self):
@@ -49,11 +52,21 @@ class validationCommands:
 
         self.__args = args
     
-
     #Dependiendo de la longitud del comando va a buscar que metodo ejecutar
     #Para evaluar los archivos
          
     def methodExecute(self):
+
+        if self.__nameCommand == "rmdir":
+
+            if self.validationFolder(self.__args, self.__unit):
+
+                return True
+            
+            else:
+
+                return False
+            
 
         if self.__nameCommand == "mkdir":
 

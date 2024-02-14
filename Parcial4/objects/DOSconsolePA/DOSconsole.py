@@ -1,6 +1,9 @@
 from . import listCommand, validationCommands
 from objects.SystemComponents.folder import folder
+from objects.SystemComponents.file import file
 from objects.TDA.LinkedList.linkedList import ListaEnlazada 
+import datetime
+
 class DOSConsole:
 
     def __init__(self, unit, user):
@@ -16,7 +19,9 @@ class DOSConsole:
         "exit": self.__commands.ExitCommand,
         "help": self.__commands.HelpCommand,
         "cd": self.__commands.Cd,
-        "mkdir" : self.__commands.Mkdir
+        "mkdir": self.__commands.Mkdir,
+        "type": self.__commands.type,
+        "rmdir": self.__commands.rmdir
         
         }
 
@@ -40,6 +45,43 @@ class DOSConsole:
 
     #Se busca si el comando existe en la lista definida previamente
                 if comando in self.__commands:
+
+                    if comando == "rmdir":
+
+                        if amountInput == 2:
+
+                            if self.__validationCommands.methodExecute():
+                                list = ListaEnlazada
+                                list = self.__unit.getFolderList()
+                                nameFolder = "".join(args[0])
+                    
+                                self.__commands[comando].execute(amountInput, list, nameFolder)
+
+                    if comando == "type":
+
+                        if amountInput == 3:
+
+                            value = args[0].split(".")
+                            nameFile = value[0]
+                            extensionFile = value[1]
+                            content = args[1]
+                            print(content)
+                            newFile = file(None,nameFile,None, extensionFile,datetime.datetime.now,None,content)
+
+                            self.__commands[comando].execute(newFile, self.__unit)  
+
+                        if amountInput == 5:
+
+                            value = args[2].split(".")
+                            nameFile = value[0]
+                            extensionFile = value[1]
+
+                            content = args[3]
+                            print(args)
+
+                            #TERMINAR DE PROGRAMAR EL COMANDO CON MAS ARGUMENTOS
+                            return True 
+
                     
                     #EJECUTA EL COMANDO DIR
                     if comando == "dir":
@@ -67,11 +109,7 @@ class DOSConsole:
                         
                         if folder1 is not None and linkedList is not None:
                             
-                            self.__commands[comando].execute(linkedList, folder1)
-                        
-                        
-                            
-                        
+                            self.__commands[comando].execute(linkedList, folder1)    
                 else:
                     print(f"Comando desconocido: {comando}")
 

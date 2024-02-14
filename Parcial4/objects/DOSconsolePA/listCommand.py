@@ -1,4 +1,8 @@
 from . import command
+from objects.SystemComponents.folder import folder as fl
+from objects.TDA.Pila.pila import Pila
+from objects.TDA.Cola.cola import Cola
+
 import sys
 
 class DirCommand(command.command):  
@@ -33,5 +37,42 @@ class Mkdir(command.command):
         list.agregar(folder)
         
         return print("La carpeta ha sido creada con exito")
+
+class type(command.command):
+
+    def execute(file , unit):
+
+        linkedList = unit.getFolderList()
+        listFolder = None
+
+        for folder in linkedList.__iter__():
+
+            listFolder = folder.getFileListFolder()
+            break
+
+        listFolder.agregar(file)
+
+        return print("Se agrego el archivo con exito")
+
+class rmdir(command.command):
+    
+    def execute(sizecommand,list, nameFolder):
+
+        trashFolder = fl
+        for folder in list.__iter__():
+            
+            if nameFolder == folder.getNameFolder().lower():
+                    
+                filesDelete = folder.getFileListFolder()
+                subFolderDelete = folder.getFolderList()
+                trashFolder = fl(None, "Papelera", None, None, filesDelete, subFolderDelete)
+
+                list.eliminar(folder)
+                list.agregar(trashFolder)
+                return print("Se elimino el archivo correctamente")
+
+            
+                            
+
         
 

@@ -14,7 +14,7 @@ class ListaEnlazada:
     def contentLinkedList(self):
 
         for folder in self.__iter__():
-
+    
             print("Contenido de la carpeta " + folder.getNameFolder())
             print(folder.contentFolder())
         
