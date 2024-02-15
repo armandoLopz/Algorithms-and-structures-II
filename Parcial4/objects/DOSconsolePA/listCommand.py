@@ -29,7 +29,7 @@ class HelpCommand(command.command):
 class Cd(command.command):
     def execute():
         #AGREGAR LAS ACCIONES QUE SE PUEDEN HACER EN EL DIRECTORIO ESTABLECIDO
-        return print("COMANDO CD EJECUTANDOSE")
+        return print("Directorio encontrado")
         
 class Mkdir(command.command):
 
@@ -40,19 +40,26 @@ class Mkdir(command.command):
 
 class type(command.command):
 
-    def execute(file , unit):
+    def execute(size, file , unit):
 
-        linkedList = unit.getFolderList()
-        listFolder = None
+        if size == 3:
+            linkedList = unit.getFolderList()
+            listFolder = None
 
-        for folder in linkedList.__iter__():
+            for folder in linkedList.__iter__():
 
-            listFolder = folder.getFileListFolder()
-            break
+                listFolder = folder.getFileListFolder()
+                break
 
-        listFolder.agregar(file)
+            listFolder.agregar(file)
 
-        return print("Se agrego el archivo con exito")
+            return print("Se agrego el archivo con exito")
+        
+        if size == 5: 
+
+            unit.agregar(file)
+            return print("Se agrego el archivo con exito")
+
 
 class rmdir(command.command):
     
@@ -70,9 +77,3 @@ class rmdir(command.command):
                 list.eliminar(folder)
                 list.agregar(trashFolder)
                 return print("Se elimino el archivo correctamente")
-
-            
-                            
-
-        
-

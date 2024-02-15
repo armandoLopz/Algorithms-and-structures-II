@@ -6,7 +6,7 @@ from uploadContent import upload
 #Se crea el usuario que ejecutara los comandos en la consola
 user = user.user
 userCreate = False
-"""
+
 while userCreate == False:
 
     try:
@@ -15,7 +15,7 @@ while userCreate == False:
 
     except:
         
-        print("Verifique los datos ingresados")"""
+        print("Verifique los datos ingresados")
 
 #Objeto unidad con la que se va a trabajar en la carga de archivos
 unit = unit_module.unit

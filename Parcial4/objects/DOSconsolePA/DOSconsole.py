@@ -1,6 +1,7 @@
 from . import listCommand, validationCommands
 from objects.SystemComponents.folder import folder
 from objects.SystemComponents.file import file
+from objects.TDA.Cola.cola import Cola
 from objects.TDA.LinkedList.linkedList import ListaEnlazada 
 import datetime
 
@@ -65,22 +66,38 @@ class DOSConsole:
                             nameFile = value[0]
                             extensionFile = value[1]
                             content = args[1]
-                            print(content)
                             newFile = file(None,nameFile,None, extensionFile,datetime.datetime.now,None,content)
 
-                            self.__commands[comando].execute(newFile, self.__unit)  
+                            self.__commands[comando].execute(self.__validationCommands.getSizeCommand(), newFile, self.__unit)  
 
                         if amountInput == 5:
 
                             value = args[2].split(".")
                             nameFile = value[0]
                             extensionFile = value[1]
-
                             content = args[3]
-                            print(args)
 
-                            #TERMINAR DE PROGRAMAR EL COMANDO CON MAS ARGUMENTOS
-                            return True 
+                            newFile = file(None,nameFile,None, extensionFile,datetime.datetime.now,None,content)
+
+                            newArgs = "".join(args[0])
+                            newArgs2 = "".join(args[1])
+
+                            defArgs = (newArgs + " " + newArgs2).split(" ")
+                            nameFolder = "".join(newArgs2)
+
+                            self.__validationCommands.setArgs(defArgs)
+
+                            exist = False
+                            fileList = Cola
+                            exist, fileList = self.__validationCommands.methodExecute()
+                            if exist:
+
+                                self.__commands[comando].execute(self.__validationCommands.getSizeCommand(),newFile, fileList)
+
+                            else:
+
+                                print("Debe ingresar una ruta valida")
+
 
                     
                     #EJECUTA EL COMANDO DIR
@@ -94,7 +111,7 @@ class DOSConsole:
                         #MOSTRAR LAS DISTINTAS ACCIONES QUE SE PUEDEN REALIZAR
                         if self.__validationCommands.methodExecute():
 
-                            return self.__commands[comando].execute(args)
+                            return self.__commands[comando].execute()
                     
                     #EJECUTA EL COMANDO MKDIR
                     if comando == "mkdir":

@@ -67,6 +67,13 @@ class validationCommands:
 
                 return False
             
+        if self.__nameCommand == "type":
+
+            if self.validationFolder:
+
+                return self.validationFolderReturnListFolder(self.__args, self.__unit)
+            
+            
 
         if self.__nameCommand == "mkdir":
 
@@ -203,6 +210,33 @@ class validationCommands:
                 #Si lenArgs es igual a 1 indica que se esta accediendo a una carpeta padre
                 #Valida si la carpeta padre existe en el directorio
                 return True , folder.getFolderList()
+        
+        return False, None
+    
+    def validationFolderReturnListFolder(self, args, unit):
+
+        #Validacion de si el archivo ingresado existe en la unidad
+        
+        lista = unit.getFolderList()
+        lenArgs = len(args)
+
+        for folder in lista.__iter__():
+
+            #Evalua si la carpeta que se va a manejar es una carpeta padre
+            if args[0].lower() == folder.getNameFolder().lower():
+                
+                #Si el comando posee 2 entradas en este momento indica que tiene subcarpeta
+                #Por lo tanto va a verificar si la subcarpeta ingresada existe
+                if lenArgs == 2:
+                    subFolder = folder.getFolderList()
+                    
+                    if self.validationSubFolder(subFolder, args[1]):
+                        
+                        return True , folder.getFileListFolder()
+                    
+                #Si lenArgs es igual a 1 indica que se esta accediendo a una carpeta padre
+                #Valida si la carpeta padre existe en el directorio
+                return True , folder.getFileListFolder()
         
         return False, None
             
