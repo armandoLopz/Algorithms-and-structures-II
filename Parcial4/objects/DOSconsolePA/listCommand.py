@@ -1,8 +1,5 @@
 from . import command
 from objects.SystemComponents.folder import folder as fl
-from objects.TDA.Pila.pila import Pila
-from objects.TDA.Cola.cola import Cola
-
 import sys
 
 class DirCommand(command.command):  

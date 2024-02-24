@@ -32,9 +32,9 @@ class DOSConsole:
             try:
     #C: Es la unidad actual
                 entrada = input("C:\\> ")
-                partes = entrada.split()
+                partes = entrada.split("/")
                 comando = partes[0].lower() if partes else None
-
+                print(partes)
                 amountInput = len(partes)
                 args = partes[1:]
 
