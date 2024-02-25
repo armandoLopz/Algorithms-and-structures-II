@@ -1,7 +1,11 @@
 from uploadContent.upload2 import upload
 from objects.SystemComponents.unit import unit
+from uploadContent import uploadListUnits
 
 unidad = unit
-carga = upload(unidad)
+carga = []
+carga = uploadListUnits.CreateLinkedListUnit()
+print(carga)
+for unit in carga:
 
-carga.createFolder()
+    print(unit.getNameUnit())

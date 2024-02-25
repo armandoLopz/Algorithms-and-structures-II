@@ -62,14 +62,14 @@ class ArbolNArio:
         return None
 
     def preorden(self):
-        print("LLAMA FUNCION PRINCIPAL")
+   
         self._preorden_recursivo(self.raiz)
 
     def _preorden_recursivo(self, nodo_actual):
         if nodo_actual is not None:
-            print("CANTIDAD DE HIJOS QUE HAY EN EL NODO " , len(nodo_actual.hijos))
+     
             for hijo in nodo_actual.hijos:    
-                print(hijo.valor.getNamefile() + " RPITIO ")
+                print(hijo.valor.getNamefile())
 
     def postorden(self):
         self._postorden_recursivo(self.raiz)
