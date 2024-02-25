@@ -92,3 +92,19 @@ class ArbolBinario:
             self._postorden_recursivo(nodo_actual.izquierda)
             self._postorden_recursivo(nodo_actual.derecha)
             print(nodo_actual.valor, end=" ")
+
+arbol = ArbolBinario()
+arbol.insertar(5)
+arbol.insertar(3)
+arbol.insertar(7)
+arbol.insertar(2)
+arbol.insertar(4)
+arbol.insertar(6)
+arbol.insertar(8)
+
+# Realizar los recorridos del árbol
+arbol.preorden()
+print("")
+arbol.inorden()
+print("")
+arbol.postorden()

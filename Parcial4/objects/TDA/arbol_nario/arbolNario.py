@@ -88,7 +88,7 @@ class ArbolNArio:
                 self._inorden_recursivo(hijo)
             print(nodo_actual.valor, end=" ")
 
-"""
+
 # Crear el árbol y realizar las operaciones
 arbol = ArbolNArio()
 arbol.insertar(1)
@@ -105,4 +105,4 @@ print("\nRecorrido en Inorden:")
 arbol.inorden()
 
 print("\nRecorrido en Postorden:")
-arbol.postorden()"""
+arbol.postorden()

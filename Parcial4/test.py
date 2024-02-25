@@ -1,10 +1,7 @@
-from objects.TDA.Pila import pila
-from objects.TDA.LinkedList import linkedList
+from uploadContent.upload2 import upload
+from objects.SystemComponents.unit import unit
 
-lista = linkedList.ListaEnlazada()
+unidad = unit
+carga = upload(unidad)
 
-if isinstance(lista, linkedList.ListaEnlazada):
-    print("Es una lista enlazada")
-else:
-    print("No es una lista enlazada")
-
+carga.createFolder()
