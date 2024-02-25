@@ -83,12 +83,13 @@ class upload:
             contentJsonFiles["archivo4"],
             contentJsonFiles["archivo5"]
         ]
-
-        self.__arbolNario.insertar(1)
-        self.__arbolNario2.insertar(1)
-        self.__arbolNario3.insertar(1)
-        self.__arbolNario4.insertar(1)
         
+        dadFile = self.__file(0,"Archivo Padre", 0,".txt", None, None, "ARCHIVO PADRE")
+        self.__arbolNario.insertar(dadFile)
+        self.__arbolNario2.insertar(dadFile)
+        self.__arbolNario3.insertar(dadFile)
+        self.__arbolNario4.insertar(dadFile)
+
         for data in listfiles:
 
             file = self.__file(
@@ -101,11 +102,13 @@ class upload:
                 data["modificationDate"]
             )
 
-            self.__arbolNario.insertar(file,1)
-            self.__arbolNario2.insertar(file,1)
-            self.__arbolNario3.insertar(file,1)
-            self.__arbolNario4.insertar(file,1)
-        
+            self.__arbolNario.insertar(file,dadFile)
+            self.__arbolNario2.insertar(file,dadFile)
+            self.__arbolNario3.insertar(file,dadFile)
+            self.__arbolNario4.insertar(file,dadFile)
+
+        self.__arbolNario4.preorden()
+           
         return self.__arbolNario, self.__arbolNario2, self.__arbolNario3, self.__arbolNario4
     
     def createFilesTxt(self):
@@ -121,6 +124,10 @@ class upload:
             contentJsonFiles["archivo5"]
         ]
 
+        dadFile = self.__file(0,"Archivo Padre", 0,".txt", None, None, "ARCHIVO PADRE")
+        self.__arbolNario5.insertar(dadFile)
+        self.__arbolNario6.insertar(dadFile)
+
         for data in listfiles:
 
             file = self.__file(
@@ -133,9 +140,10 @@ class upload:
                 data["modificationDate"]
             )
 
-            self.__arbolNario5.insertar(file)
-            self.__arbolNario6.insertar(file)
-
+            self.__arbolNario5.insertar(file, dadFile)
+            self.__arbolNario6.insertar(file, dadFile)
+        print("RECORRIDO FILES TXT")
+        self.__arbolNario6.preorden()
         return self.__arbolNario5, self.__arbolNario6
     
     #Creacion de las funciones que se encargan de la instanciacion de las carpetas 
@@ -155,7 +163,8 @@ class upload:
             self.__arbolBinario2.insertar(folder.folder)
             self.__arbolBinario3.insertar(folder.folder)
             self.__arbolBinario4.insertar(folder.folder)
-
+        print("recorrido subfolders txt")
+        self.__arbolBinario.preorden()
         return self.__arbolBinario, self.__arbolBinario2, self.__arbolBinario3, self.__arbolBinario4
     
     def createFolder(self):
@@ -169,15 +178,16 @@ class upload:
         folder3 = self.__folder(3,"ContenidoPDF", 1400, datetime.datetime.now, file3, subFolders3)
         folder4 = self.__folder(4,"Clases universidad", 1500, datetime.datetime.now, file4, subFolders4)
 
-        #Carpeta que va a recibir una pila vacia
         listFolders = [folder1, folder2, folder3, folder4]
-        
+
+        dadfolder = self.__folder(0,"Carpeta Padre", None, datetime.datetime.now, None, None)
+        self.__arbolBinario.insertar(dadfolder)
+
         for folder.folder in listFolders:
 
             self.__arbolBinario5.insertar(folder.folder)
-        
-        print("Estructura de archivos" , self.__arbolBinario5.preorden())
-        
+        print("recorrido folders TO UNIT ")
+        self.__arbolBinario5.preorden()
         return self.__arbolBinario5
     
     #Creacion de la unidad que se ejecutara en la consolaDOS

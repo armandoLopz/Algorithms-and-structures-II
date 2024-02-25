@@ -15,12 +15,12 @@ class ArbolBinario:
             self._insertar_recursivo(valor, self.raiz)
     
     def _insertar_recursivo(self, valor, nodo_actual):
-        if valor < nodo_actual.valor:
+
             if nodo_actual.izquierda is None:
                 nodo_actual.izquierda = Nodo(valor)
             else:
                 self._insertar_recursivo(valor, nodo_actual.izquierda)
-        elif valor > nodo_actual.valor:
+  
             if nodo_actual.derecha is None:
                 nodo_actual.derecha = Nodo(valor)
             else:
@@ -71,9 +71,9 @@ class ArbolBinario:
     
     def _preorden_recursivo(self, nodo_actual):
         if nodo_actual is not None:
-            print(nodo_actual.valor, end=" ")
+            print(nodo_actual.valor.getNameFolder(), end=" ")
             self._preorden_recursivo(nodo_actual.izquierda)
-            self._preorden_recursivo(nodo_actual.derecha)
+            #self._preorden_recursivo(nodo_actual.derecha)
     
     def inorden(self):
         self._inorden_recursivo(self.raiz)
@@ -93,6 +93,7 @@ class ArbolBinario:
             self._postorden_recursivo(nodo_actual.derecha)
             print(nodo_actual.valor, end=" ")
 
+"""
 arbol = ArbolBinario()
 arbol.insertar(5)
 arbol.insertar(3)
@@ -107,4 +108,4 @@ arbol.preorden()
 print("")
 arbol.inorden()
 print("")
-arbol.postorden()
+arbol.postorden()"""
