@@ -3,6 +3,10 @@ from objects.SystemComponents.folder import folder
 from objects.SystemComponents.file import file
 from objects.TDA.Cola.cola import Cola
 from objects.TDA.LinkedList.linkedList import ListaEnlazada 
+
+from objects.TDA.arbol_binario import arbolBinario
+
+
 import datetime
 
 class DOSConsole:
@@ -116,9 +120,9 @@ class DOSConsole:
                     
                     #EJECUTA EL COMANDO MKDIR
                     if comando == "mkdir":
-                        
-                        folder1 = folder(0,partes[1],None,None,None,None)
 
+                        needFolderUnit = False
+                        
                         if amountInput == 2:
 
                             if folder1 is None and self.__unit is None:
@@ -127,16 +131,45 @@ class DOSConsole:
                             
                             if folder1 is not None and self.__unit is not None:
                                 
-                                self.__commands[comando].execute(self.__unit, folder1)
+                                folder1 = folder(0,partes[1],None,None,None,None)
+                                self.__commands[comando].execute(self.__unit, folder1, None)
 
                         if amountInput == 3:
 
-                            if self.__validationCommands.validationUnit():
+                            if self.__validationCommands.validationUnit(needFolderUnit):
 
-                                self.__commands[comando].execute(self.__unit, folder1)
+                                folder1 = folder(0,partes[2],None,None,None,None)
+                                self.__commands[comando].execute(self.__unit, folder1,None)
                             
                             else:
                                 print("Unidad no encontrada")
+                        
+                        if amountInput == 4:
+
+                            folder1 = folder(0,partes[3],None,None,None,None)
+
+                            needFolderUnit = True
+                            listFolderUnit = arbolBinario.ArbolBinario 
+
+                            listFolderUnit =  self.__validationCommands.validationUnit(needFolderUnit)
+
+                            if listFolderUnit is not None:
+                                
+                                sublistFolder = arbolBinario.ArbolBinario()
+
+                                sublistFolder =  self.__validationCommands.validationFolder(listFolderUnit, partes[2])
+
+                                if sublistFolder is not None:
+
+                                    self.__commands[comando].execute(sublistFolder, folder1, amountInput)
+                                
+                                else:
+
+                                    print("Carpeta no encontrada")
+
+                            else:
+                                print("Unidad no encontrada")
+                            
                 else:
                     print(f"Comando desconocido: {comando}")
 

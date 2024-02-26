@@ -47,13 +47,30 @@ class validationCommands:
 
         self.__args = args
     
+    #METHODS
+        
+    def validationFolder(self,folderList, nameFolder):
+
+        for folder in folderList.__iter__():
+
+            if nameFolder.lower() == folder.getNameFolder().lower():
+                
+                return folder.getFolderList()
+
+        return None
+    
     #Valida si la unidad se encuentra en la lista enlazada de unidades
-    def validationUnit(self):
+    def validationUnit(self, needFolderUnit):
         
         for unit in self.__unit :
 
             if self.__args[0].lower() == unit.getNameUnit().lower():
 
+                #Devuelve la folderlist de la unidad encontrada para futuras operaciones
+                if needFolderUnit:
+                    
+                    return unit.getFolderList()
+                
                 return True
         
-        return False
+        return None

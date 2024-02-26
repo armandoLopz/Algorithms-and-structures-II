@@ -30,14 +30,18 @@ class Cd(command.command):
         
 class Mkdir(command.command):
 
-    def execute(list, folder):
+    def execute(list, folder, size):
 
+        if size == 4:
+
+            list.insertar(folder)
+            return print("La carpeta ha sido creada con exito")
+        
         for unit in list:
        
             unit.getFolderList().insertar(folder)
-            break
-        
-        return print("La carpeta ha sido creada con exito")
+            return print("La carpeta ha sido creada con exito")
+
 
 class type(command.command):
 
