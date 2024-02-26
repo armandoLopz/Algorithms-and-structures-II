@@ -47,21 +47,6 @@ class ArbolBinario:
                 nodo_actual.derecha = self._eliminar_recursivo(sucesor.valor, nodo_actual.derecha)
         return nodo_actual
     
-    def __iter__(self):
-        return self._preorden_iterativo(self.raiz)
-
-    def _preorden_iterativo(self, raiz):
-        stack = []
-        if raiz:
-            stack.append(raiz)
-        while stack:
-            nodo = stack.pop()
-            yield nodo.valor
-            if nodo.derecha:
-                stack.append(nodo.derecha)
-            if nodo.izquierda:
-                stack.append(nodo.izquierda)
-                
     def _encontrar_minimo(self, nodo_actual):
         if nodo_actual.izquierda is None:
             return nodo_actual
@@ -82,12 +67,12 @@ class ArbolBinario:
         return self._consultar_recursivo(valor, nodo_actual.derecha)
     
     def preorden(self):
-        return self._preorden_recursivo(self.raiz)
+        self._preorden_recursivo(self.raiz)
     
     def _preorden_recursivo(self, nodo_actual):
         if nodo_actual is not None:
             print(nodo_actual.valor.getNameFolder(), end=" ")
-            return self._preorden_recursivo(nodo_actual.izquierda)
+            self._preorden_recursivo(nodo_actual.izquierda)
             #self._preorden_recursivo(nodo_actual.derecha)
     
     def inorden(self):

@@ -1,0 +1,56 @@
+{
+    "archivo1":{
+        
+    "id" : 1,
+    "name": "Prueba de archivo 1",
+    "size": 20,
+    "extension": ".json",
+    "creationDate": "",
+    "modificationDate": "None",
+    "content": "CONTENIDO DEL ARCHIVO DE PRUEBA"
+    },
+
+    "archivo2":{
+        
+    "id" : 2,
+    "name": "Prueba de archivo 2",
+    "size": 414,
+    "extension": ".json",
+    "creationDate": "",
+    "modificationDate": "None",
+    "content": "CONTENIDO DEL ARCHIVO DE PRUEBA2"
+    },
+    
+    "archivo3":{
+        
+    "id" : 3,
+    "name": "Prueba de archivo 3",
+    "size": 44,
+    "extension": ".json",
+    "creationDate": "",
+    "modificationDate": "None",
+    "content": "CONTENIDO DEL ARCHIVO DE PRUEBA3"
+    },
+
+    "archivo4":{
+        
+    "id" : 4,
+    "name": "Prueba de archivo 4",
+    "size": 414,
+    "extension": ".json",
+    "creationDate": "",
+    "modificationDate": "None",
+    "content": "CONTENIDO DEL ARCHIVO DE PRUEBA4"
+    },
+
+    "archivo5":{
+        
+        "id" : 5,
+        "name": "Prueba de archivo 5",
+        "size": 414,
+        "extension": ".json",
+        "creationDate": "",
+        "modificationDate": "None",
+        "content": "CONTENIDO DEL ARCHIVO DE PRUEBA5"
+        }
+}

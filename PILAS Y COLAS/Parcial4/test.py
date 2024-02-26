@@ -8,7 +8,6 @@ carga = uploadListUnits.CreateLinkedListUnit()
 print(carga)
 for unit in carga:
 
-    if "contactos" in unit.getFolderList().preorden():
-        print("SE ENCUENTRA ADENTRO")
+    unit.getFolderList().preorden()
     print("")
 

@@ -15,12 +15,12 @@ class ArbolBinario:
             self._insertar_recursivo(valor, self.raiz)
     
     def _insertar_recursivo(self, valor, nodo_actual):
-
+        if valor < nodo_actual.valor:
             if nodo_actual.izquierda is None:
                 nodo_actual.izquierda = Nodo(valor)
             else:
                 self._insertar_recursivo(valor, nodo_actual.izquierda)
-  
+        elif valor > nodo_actual.valor:
             if nodo_actual.derecha is None:
                 nodo_actual.derecha = Nodo(valor)
             else:
@@ -47,21 +47,6 @@ class ArbolBinario:
                 nodo_actual.derecha = self._eliminar_recursivo(sucesor.valor, nodo_actual.derecha)
         return nodo_actual
     
-    def __iter__(self):
-        return self._preorden_iterativo(self.raiz)
-
-    def _preorden_iterativo(self, raiz):
-        stack = []
-        if raiz:
-            stack.append(raiz)
-        while stack:
-            nodo = stack.pop()
-            yield nodo.valor
-            if nodo.derecha:
-                stack.append(nodo.derecha)
-            if nodo.izquierda:
-                stack.append(nodo.izquierda)
-                
     def _encontrar_minimo(self, nodo_actual):
         if nodo_actual.izquierda is None:
             return nodo_actual
@@ -82,13 +67,13 @@ class ArbolBinario:
         return self._consultar_recursivo(valor, nodo_actual.derecha)
     
     def preorden(self):
-        return self._preorden_recursivo(self.raiz)
+        self._preorden_recursivo(self.raiz)
     
     def _preorden_recursivo(self, nodo_actual):
         if nodo_actual is not None:
-            print(nodo_actual.valor.getNameFolder(), end=" ")
-            return self._preorden_recursivo(nodo_actual.izquierda)
-            #self._preorden_recursivo(nodo_actual.derecha)
+            print(nodo_actual.valor, end=" ")
+            self._preorden_recursivo(nodo_actual.izquierda)
+            self._preorden_recursivo(nodo_actual.derecha)
     
     def inorden(self):
         self._inorden_recursivo(self.raiz)
@@ -108,19 +93,39 @@ class ArbolBinario:
             self._postorden_recursivo(nodo_actual.derecha)
             print(nodo_actual.valor, end=" ")
 
-"""
+# Ejemplo de uso:
 arbol = ArbolBinario()
-arbol.insertar(5)
-arbol.insertar(3)
-arbol.insertar(7)
-arbol.insertar(2)
 arbol.insertar(4)
+arbol.insertar(2)
+arbol.insertar(1)
+arbol.insertar(3)
 arbol.insertar(6)
-arbol.insertar(8)
-
-# Realizar los recorridos del árbol
+arbol.insertar(5)
+arbol.insertar(7)
+print("Recorrido en Preorden:")
 arbol.preorden()
-print("")
+print("\nRecorrido en Inorden:")
 arbol.inorden()
-print("")
-arbol.postorden()"""
+print("\nRecorrido en Postorden:")
+arbol.postorden()
+valor_a_eliminar = 2
+arbol.eliminar(valor_a_eliminar)
+print(f"\nEl valor {valor_a_eliminar} ha sido eliminado.")
+print("Recorrido en Inorden después de eliminar:")
+arbol.inorden()
+valor_a_modificar = 5
+valor_nuevo = 8
+arbol.modificar(valor_a_modificar, valor_nuevo)
+
+print(f"El valor {valor_a_modificar} ha sido modificado por {valor_nuevo}.")
+print("Recorrido en Inorden después de modificar:")
+
+arbol.inorden()
+
+valor_a_consultar = 6
+nodo_encontrado = arbol.consultar(valor_a_consultar)
+
+if nodo_encontrado:
+    print(f"El valor {valor_a_consultar} está presente en el árbol.")
+else:
+    print(f"El valor {valor_a_consultar} no está presente en el árbol.")

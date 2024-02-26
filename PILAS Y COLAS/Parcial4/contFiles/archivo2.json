@@ -1,0 +1,56 @@
+{
+    "archivo1":{
+        
+    "id" : 1,
+    "name": "Archivo 1",
+    "size": 70,
+    "extension": "txt",
+    "creationDate": "",
+    "modificationDate": "None",
+    "content": "CONTENIDO DEL ARCHIVO DE PRUEBA"
+    },
+
+    "archivo2":{
+        
+    "id" : 2,
+    "name": "Archivo 2",
+    "size": 114,
+    "extension": ".txt",
+    "creationDate": "",
+    "modificationDate": "None",
+    "content": "CONTENIDO DEL ARCHIVO DE PRUEBA 2"
+    },
+    
+    "archivo3":{
+        
+    "id" : 3,
+    "name": "Prueba de archivo 3",
+    "size": 34,
+    "extension": ".txt",
+    "creationDate": "",
+    "modificationDate": "None",
+    "content": "CONTENIDO DEL ARCHIVO DE PRUEBA 3"
+    },
+
+    "archivo4":{
+        
+    "id" : 4,
+    "name": "Prueba de archivo 4",
+    "size": 14,
+    "extension": ".txt",
+    "creationDate": "",
+    "modificationDate": "None",
+    "content": "CONTENIDO DEL ARCHIVO DE PRUEBA 4"
+    },
+
+    "archivo5":{
+        
+        "id" : 5,
+        "name": "Archivo 5",
+        "size": 94,
+        "extension": ".txt",
+        "creationDate": "",
+        "modificationDate": "None",
+        "content": "CONTENIDO DEL ARCHIVO DE PRUEBA 5"
+        }
+}
