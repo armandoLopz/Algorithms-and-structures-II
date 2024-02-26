@@ -1,4 +1,4 @@
-from . import listCommand, validationCommands
+from . import listCommand, validationCommandsArboles
 from objects.SystemComponents.folder import folder
 from objects.SystemComponents.file import file
 from objects.TDA.Cola.cola import Cola
@@ -9,7 +9,7 @@ class DOSConsole:
 
     def __init__(self, unit, user):
 
-        self.__validationCommands = validationCommands.validationCommands()
+        self.__validationCommands = validationCommandsArboles.validationCommands()
         self.__unit = unit
         self.__commands = listCommand
 
@@ -31,10 +31,11 @@ class DOSConsole:
         while True:
             try:
     #C: Es la unidad actual
-                entrada = input("C:\\> ")
+                entrada = input("\\\\> ")
+
                 partes = entrada.split("/")
                 comando = partes[0].lower() if partes else None
-                print(partes)
+     
                 amountInput = len(partes)
                 args = partes[1:]
 
@@ -115,18 +116,27 @@ class DOSConsole:
                     
                     #EJECUTA EL COMANDO MKDIR
                     if comando == "mkdir":
-
-                        folder1 = folder
-                        linkedList = ListaEnlazada
-                        folder1, linkedList = self.__validationCommands.methodExecute()
-
-                        if folder1 is None and linkedList is None:
-
-                            print("Ingrese una ruta valida para crear una nueva carpeta")
                         
-                        if folder1 is not None and linkedList is not None:
+                        folder1 = folder(0,partes[1],None,None,None,None)
+
+                        if amountInput == 2:
+
+                            if folder1 is None and self.__unit is None:
+
+                                print("Ingrese una ruta valida para crear una nueva carpeta")
                             
-                            self.__commands[comando].execute(linkedList, folder1)    
+                            if folder1 is not None and self.__unit is not None:
+                                
+                                self.__commands[comando].execute(self.__unit, folder1)
+
+                        if amountInput == 3:
+
+                            if self.__validationCommands.validationUnit():
+
+                                self.__commands[comando].execute(self.__unit, folder1)
+                            
+                            else:
+                                print("Unidad no encontrada")
                 else:
                     print(f"Comando desconocido: {comando}")
 

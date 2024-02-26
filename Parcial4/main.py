@@ -1,7 +1,7 @@
 from objects.userManage import user 
 from objects.DOSconsolePA import DOSconsole as dc
 from objects.SystemComponents import unit as unit_module
-from uploadContent import upload
+from uploadContent import uploadListUnits
 
 #Se crea el usuario que ejecutara los comandos en la consola
 user = user.user
@@ -17,11 +17,10 @@ while userCreate == False:
         
         print("Verifique los datos ingresados")"""
 
-#Objeto unidad con la que se va a trabajar en la carga de archivos
-unit = unit_module.unit
-#Carga de archivos 
-uploadObjects = upload.upload(unit)
+#Carga de los archivos que tendran las unidades 
+carga = []
+carga = uploadListUnits.CreateLinkedListUnit()
 
 #Inicializacion de la DOSconsole
-dosConsole = dc.DOSConsole(uploadObjects.createUnit(), user)
+dosConsole = dc.DOSConsole(carga, user)
 dosConsole.run()

@@ -8,4 +8,6 @@ carga = uploadListUnits.CreateLinkedListUnit()
 print(carga)
 for unit in carga:
 
-    print(unit.getNameUnit())
+    unit.getFolderList().preorden()
+    print("")
+

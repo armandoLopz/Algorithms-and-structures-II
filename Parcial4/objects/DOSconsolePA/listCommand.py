@@ -31,7 +31,11 @@ class Cd(command.command):
 class Mkdir(command.command):
 
     def execute(list, folder):
-        list.agregar(folder)
+
+        for unit in list:
+       
+            unit.getFolderList().insertar(folder)
+            break
         
         return print("La carpeta ha sido creada con exito")
 
