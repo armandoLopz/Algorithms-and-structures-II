@@ -6,7 +6,11 @@ class NodoNArio:
 class ArbolNArio:
     def __init__(self):
         self.raiz = None
+    
+    def getRaiz(self):
 
+        return self.raiz.valor
+    
     def insertar(self, valor, padre=None):
         nuevo_nodo = NodoNArio(valor)
 
@@ -89,7 +93,7 @@ class ArbolNArio:
                 self._inorden_recursivo(hijo)
             print(nodo_actual.valor, end=" ")
 
-"""
+""""
 # Crear el árbol y realizar las operaciones
 arbol = ArbolNArio()
 arbol.insertar(1)
@@ -99,6 +103,7 @@ arbol.insertar(4, 2)
 arbol.insertar(5, 2)
 arbol.insertar(6, 3)
 
+print(arbol.getRaiz())
 print("Recorrido en Preorden:")
 arbol.preorden()
 

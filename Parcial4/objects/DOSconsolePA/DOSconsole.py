@@ -2,10 +2,10 @@ from . import listCommand, validationCommandsArboles
 from objects.SystemComponents.folder import folder
 from objects.SystemComponents.file import file
 from objects.TDA.Cola.cola import Cola
+
 from objects.TDA.LinkedList.linkedList import ListaEnlazada 
-
 from objects.TDA.arbol_binario import arbolBinario
-
+from objects.TDA.arbol_nario import arbolNario
 
 import datetime
 
@@ -66,44 +66,63 @@ class DOSConsole:
                     if comando == "type":
 
                         if amountInput == 3:
+                            
+                            correctArgs = False
+                            correctArgs = self.__validationCommands.validationExtensionFile(args[0])
+                            
+                            if correctArgs:
+                                value = args[0].split(".")
+                                
+                                nameFile = value[0]
+                                extensionFile = value[1]
+                                content = args[1]
+                                newFile = file(None,nameFile,None, extensionFile,datetime.datetime.now,None,content)
 
-                            value = args[0].split(".")
-                            nameFile = value[0]
-                            extensionFile = value[1]
-                            content = args[1]
-                            newFile = file(None,nameFile,None, extensionFile,datetime.datetime.now,None,content)
+                                self.__commands[comando].execute(self.__validationCommands.getSizeCommand(), newFile, self.__unit)  
+                        
+                        if amountInput == 6:
 
-                            self.__commands[comando].execute(self.__validationCommands.getSizeCommand(), newFile, self.__unit)  
+                            correctArgs = False
+                            correctArgs = self.__validationCommands.validationExtensionFile(args[3])
+                            
+                            if correctArgs:
+                                value = args[3].split(".")
+                                nameFile = value[0]
+                                extensionFile = value[1]
+                                content = args[3]
 
-                        if amountInput == 5:
+                                newFile = file(None,nameFile,None, extensionFile,datetime.datetime.now,None,content)
+                                
+                                #Indicara al metodo que retorne la lista de carpetas de la unidad
+                                needFolderUnit = True
+                                #lista de carpetas de la  unidad a buscar 
+                                listFolderUnit = arbolBinario.ArbolBinario()
+                                listFolderUnit = self.__validationCommands.validationUnit(needFolderUnit)
 
-                            value = args[2].split(".")
-                            nameFile = value[0]
-                            extensionFile = value[1]
-                            content = args[3]
+                                if listFolderUnit is not None:
+     
+                                    listSubFolder = arbolBinario.ArbolBinario()
+                                    listSubFolder =  self.__validationCommands.validationFolder(listFolderUnit, args[1])
 
-                            newFile = file(None,nameFile,None, extensionFile,datetime.datetime.now,None,content)
+                                    if listSubFolder is not None:
+                                    
+                                        #Comprueba si la subcarpeta ingresada es valida
+                                        listFilesSubFolder = arbolNario.ArbolNArio()
+                                        listFilesSubFolder =  self.__validationCommands.validationSubFolder(listSubFolder, args[2])
+                                        
+                                        if listFilesSubFolder is not None:
+                                            
+                                            self.__commands[comando].execute(self.__validationCommands.getSizeCommand(), newFile, listFilesSubFolder)
+                                        
+                                        else:
+                                            
+                                            print("Ingrese una subcarpeta valida")
+                                    else:
 
-                            newArgs = "".join(args[0])
-                            newArgs2 = "".join(args[1])
+                                        print("Ingrese una carpeta valida")
+                                else:
 
-                            defArgs = (newArgs + " " + newArgs2).split(" ")
-                            nameFolder = "".join(newArgs2)
-
-                            self.__validationCommands.setArgs(defArgs)
-
-                            exist = False
-                            fileList = Cola
-                            exist, fileList = self.__validationCommands.methodExecute()
-                            if exist:
-
-                                self.__commands[comando].execute(self.__validationCommands.getSizeCommand(),newFile, fileList)
-
-                            else:
-
-                                print("Debe ingresar una ruta valida")
-
-
+                                    print("Unidad no encontrada")
                     
                     #EJECUTA EL COMANDO DIR
                     if comando == "dir":

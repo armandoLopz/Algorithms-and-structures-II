@@ -48,6 +48,29 @@ class validationCommands:
         self.__args = args
     
     #METHODS
+    
+    def validationExtensionFile(self, args):
+        
+        name = args.lower()
+
+        if not name.endswith("." + "txt"):
+
+            print("Debe ingresar los argumentos validos de la extensión del archivo.")
+            return False
+        
+        return True
+    
+
+    def validationSubFolder(self,folderList, nameFolder):
+
+        for folder in folderList.__iter__():
+
+            print(folder.getNameFolder().lower())
+            if nameFolder.lower() == folder.getNameFolder().lower():
+                
+                return folder.getFileListFolder()
+
+        return None
         
     def validationFolder(self,folderList, nameFolder):
 
