@@ -85,7 +85,7 @@ class upload:
             self.__arbolNario2.insertar(file,dadFile)
             self.__arbolNario3.insertar(file,dadFile)
             self.__arbolNario4.insertar(file,dadFile)
-           
+
         return self.__arbolNario, self.__arbolNario2, self.__arbolNario3, self.__arbolNario4
     
     def createFilesTxt(self):

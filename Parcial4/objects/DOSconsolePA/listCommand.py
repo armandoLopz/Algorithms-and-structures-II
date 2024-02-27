@@ -48,21 +48,31 @@ class type(command.command):
     def execute(size, file , unit):
 
         if size == 3:
-            linkedList = unit.getFolderList()
+
             listFolder = None
+            listFile = None
+            raiz = None
 
-            for folder in linkedList.__iter__():
+            for unit in unit.__iter__():
 
-                listFolder = folder.getFileListFolder()
+                listFolder = unit.getFolderList()
                 break
 
-            listFolder.agregar(file)
+            for folder in listFolder:
+
+                listFile =  folder.getFileListFolder()
+                break
+            
+            raiz = listFile.getRaiz()
+   
+            listFile.insertar(file, raiz)
 
             return print("Se agrego el archivo con exito")
         
-        if size == 5: 
+        if size == 6: 
 
-            unit.agregar(file)
+            raiz = unit.getRaiz()
+            unit.insertar(file, raiz)
             return print("Se agrego el archivo con exito")
 
 
