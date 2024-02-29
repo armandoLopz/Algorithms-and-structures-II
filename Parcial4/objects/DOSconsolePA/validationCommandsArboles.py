@@ -60,12 +60,10 @@ class validationCommands:
         
         return True
     
-
     def validationSubFolder(self,folderList, nameFolder):
 
         for folder in folderList.__iter__():
 
-            print(folder.getNameFolder().lower())
             if nameFolder.lower() == folder.getNameFolder().lower():
                 
                 return folder.getFileListFolder()
@@ -75,9 +73,8 @@ class validationCommands:
     def validationFolder(self,folderList, nameFolder):
 
         for folder in folderList.__iter__():
-
+            
             if nameFolder.lower() == folder.getNameFolder().lower():
-                
                 return folder.getFolderList()
 
         return None

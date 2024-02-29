@@ -86,8 +86,14 @@ class ArbolBinario:
     
     def _preorden_recursivo(self, nodo_actual):
         if nodo_actual is not None:
-            print(nodo_actual.valor.getNameFolder(), end=" ")
-            return self._preorden_recursivo(nodo_actual.izquierda)
+
+            print(nodo_actual.valor.getNameFolder() , "\n" , nodo_actual.valor.contentFolder())
+
+            if nodo_actual.valor.getFolderList() is not None:
+
+                nodo_actual.valor.contentFolder()
+                
+            return self._preorden_recursivo(nodo_actual.izquierda) 
             #self._preorden_recursivo(nodo_actual.derecha)
     
     def inorden(self):
@@ -107,6 +113,40 @@ class ArbolBinario:
             self._postorden_recursivo(nodo_actual.izquierda)
             self._postorden_recursivo(nodo_actual.derecha)
             print(nodo_actual.valor, end=" ")
+
+
+    def eliminar_folder_por_nombre(self, nombre):
+        if self.raiz is None:
+            return False
+        else:
+            self.raiz = self._eliminar_recursivo_por_nombre(nombre, self.raiz)
+            return True
+
+    def _eliminar_recursivo_por_nombre(self, nombre, nodo_actual):
+        if nodo_actual is None:
+            return None
+        
+        if nombre < nodo_actual.valor.getNameFolder():
+            nodo_actual.izquierda = self._eliminar_recursivo_por_nombre(nombre, nodo_actual.izquierda)
+        elif nombre > nodo_actual.valor.getNameFolder():
+            nodo_actual.derecha = self._eliminar_recursivo_por_nombre(nombre, nodo_actual.derecha)
+        else:
+            if nodo_actual.izquierda is None:
+                return nodo_actual.derecha
+            elif nodo_actual.derecha is None:
+                return nodo_actual.izquierda
+            
+            nodo_actual.valor = self._encontrar_menor_valor(nodo_actual.derecha)
+            nodo_actual.derecha = self._eliminar_recursivo_por_nombre(nodo_actual.valor.getNameFolder(), nodo_actual.derecha)
+
+        return nodo_actual
+
+    def _encontrar_menor_valor(self, nodo_actual):
+        actual = nodo_actual
+        while actual.izquierda is not None:
+            actual = actual.izquierda
+        return actual.valor
+
 
 """
 arbol = ArbolBinario()

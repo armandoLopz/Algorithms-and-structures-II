@@ -6,7 +6,8 @@ class DirCommand(command.command):
     #El metodo execute sirve para ejecutar toda la accion que hace el
     # comando al ser llamado desde la consola
     def execute(unit):
-        #print(f"ARCHIVOS DE LA unidad {unit.getNameUnit()}")
+
+        #print(f"ARCHIVOS DE LA unidad {unit.getNameUnit()}") 
         return unit.contentUnit()
             
 class ExitCommand(command.command):
@@ -80,15 +81,25 @@ class rmdir(command.command):
     
     def execute(sizecommand,list, nameFolder):
 
-        trashFolder = fl
-        for folder in list.__iter__():
-            
-            if nameFolder == folder.getNameFolder().lower():
-                    
-                filesDelete = folder.getFileListFolder()
-                subFolderDelete = folder.getFolderList()
-                trashFolder = fl(None, "Papelera", None, None, filesDelete, subFolderDelete)
+            trashFolder = fl
+            correctFolder = False
 
-                list.eliminar(folder)
-                list.agregar(trashFolder)
-                return print("Se elimino el archivo correctamente")
+            for folder in list.__iter__():
+                print("NAME FOLDER ENTRADA " + nameFolder)
+                print("NAME FOLDER ENTRADA " + folder.getNameFolder().lower())
+                
+                if nameFolder.lower() == folder.getNameFolder().lower():
+                        
+                    filesDelete = folder.getFileListFolder()
+                    subFolderDelete = folder.getFolderList()
+                    trashFolder = fl(None, "Papelera", None, None, filesDelete, subFolderDelete)
+
+                    list.eliminar_folder_por_nombre(folder.getNameFolder())
+                    list.insertar(trashFolder)
+
+                    correctFolder = False
+                    return print("Se elimino el archivo correctamente")
+                
+            if correctFolder == False:
+
+                return print("Ingrese una carpeta valida en la unidad")
