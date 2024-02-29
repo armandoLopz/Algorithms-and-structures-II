@@ -10,7 +10,9 @@ class ArbolNArio:
     def getRaiz(self):
 
         return self.raiz.valor
-    
+    def esta_vacio(self):
+        return self.raiz is None
+        
     def insertar(self, valor, padre=None):
         nuevo_nodo = NodoNArio(valor)
 

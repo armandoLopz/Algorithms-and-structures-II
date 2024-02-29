@@ -54,14 +54,45 @@ class DOSConsole:
 
                     if comando == "rmdir":
 
-                        if amountInput == 2:
+                        if amountInput == 3:
+                            
+                            listFolderUnit = arbolBinario.ArbolBinario
+                            needFolderUnit = True
 
-                            if self.__validationCommands.methodExecute():
-                                list = ListaEnlazada
-                                list = self.__unit.getFolderList()
-                                nameFolder = "".join(args[0])
+                            listFolderUnit = self.__validationCommands.validationUnit(needFolderUnit)
+
+                            if listFolderUnit is not None:
+                
+                                nameFolder = "".join(args[1])
                     
-                                self.__commands[comando].execute(amountInput, list, nameFolder)
+                                self.__commands[comando].execute(amountInput, listFolderUnit, nameFolder)
+                        
+                            else:
+                                print("Unidad no encontrada")
+                        
+                        if amountInput == 4:
+                    
+                            listFolderUnit = arbolBinario.ArbolBinario
+                            needFolderUnit = True
+
+                            listFolderUnit = self.__validationCommands.validationUnit(needFolderUnit)
+
+                            if listFolderUnit is not None:
+
+                                listSubFolder = arbolBinario.ArbolBinario
+                                nameFolder = "".join(args[1])
+
+                                listSubFolder = self.__validationCommands.validationFolder(listFolderUnit, nameFolder)
+
+                                if listSubFolder is not None:
+                                    nameFolder = "".join(args[2])
+                                    self.__commands[comando].execute(amountInput, listSubFolder, nameFolder)
+                                else:
+
+                                    print("Subcarpeta no encontrada")
+                            else:
+                                print("Unidad no encontrada")
+
 
                     if comando == "type":
 
@@ -127,7 +158,10 @@ class DOSConsole:
                     #EJECUTA EL COMANDO DIR
                     if comando == "dir":
 
-                        self.__commands[comando].execute(self.__unit)
+                        for unit in self.__unit:
+                            
+                            self.__commands[comando].execute(unit)
+                            break
 
                     #EJECUTA EL COMANDO CD
                     if comando == "cd":
@@ -144,13 +178,13 @@ class DOSConsole:
                         
                         if amountInput == 2:
 
+                            folder1 = folder(0,partes[1],None,None,None,None)
                             if folder1 is None and self.__unit is None:
 
                                 print("Ingrese una ruta valida para crear una nueva carpeta")
                             
                             if folder1 is not None and self.__unit is not None:
                                 
-                                folder1 = folder(0,partes[1],None,None,None,None)
                                 self.__commands[comando].execute(self.__unit, folder1, None)
 
                         if amountInput == 3:

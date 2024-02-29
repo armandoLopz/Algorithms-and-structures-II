@@ -35,20 +35,17 @@ class folder:
         #Verifica si La carpeta posee subcarpeta
         if self.__folderList == None:
 
-            return self.__fileList.recorrer()
+            return self.__fileList.preorden()
         
         #Verifica si la carpeta que se paso como parametro se encuentra vacia
-        if self.__folderList.estaVacia() == False:
 
-            self.contentSubFolder()
+        self.contentSubFolder()
 
-            return self.__fileList.recorrer()
-        
-        return ""
+        return self.__fileList.preorden()
         
     def contentSubFolder(self):
         
-        return self.__folderList.recorrer()
+        return self.__folderList.preorden()
     
     #GETTERS 
     
