@@ -11,6 +11,10 @@ class folder:
         
     #METHODS
     
+    def getFolderReference(self):
+        
+        return self
+
     def addFileToCarpet(self, fichero):
 
         self.__fileList.append(fichero)

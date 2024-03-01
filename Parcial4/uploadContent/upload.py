@@ -26,6 +26,8 @@ class upload:
         self.__arbolBinario4 = arbolBinario.ArbolBinario()
 
         self.__arbolBinario5 = arbolBinario.ArbolBinario()
+        self.__arbolBinario6 = arbolBinario.ArbolBinario()
+        self.__arbolBinario7 = arbolBinario.ArbolBinario()
 
     #Creacion de las funciones que se encargan de la carga de archivos JSON y Txt
     def datosJson(self):
@@ -133,6 +135,18 @@ class upload:
 
         listFolders = [folder1, folder2]
         
+        folder3 = self.__folder(1,"ARCHIVO SUB", 400, datetime.datetime.now, file1, None)
+        folder4 = self.__folder(2,"JUEGOS FUT", 300, datetime.datetime.now, file2, None)
+        listSubfolder = [folder3, folder4]
+
+        for folder.folder in listSubfolder:
+
+            self.__arbolBinario6.insertar(folder.folder)
+            self.__arbolBinario7.insertar(folder.folder)
+        
+        folder1.setFolderList(self.__arbolBinario6)
+        folder2.setFolderList(self.__arbolBinario7)
+
         for folder.folder in listFolders:
 
             self.__arbolBinario.insertar(folder.folder)

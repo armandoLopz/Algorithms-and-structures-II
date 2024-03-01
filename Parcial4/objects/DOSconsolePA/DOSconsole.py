@@ -166,10 +166,43 @@ class DOSConsole:
                     #EJECUTA EL COMANDO CD
                     if comando == "cd":
                         
-                        #MOSTRAR LAS DISTINTAS ACCIONES QUE SE PUEDEN REALIZAR
-                        if self.__validationCommands.methodExecute():
+                        folder1 = folder
 
-                            return self.__commands[comando].execute()
+                        listFolderUnit = arbolBinario.ArbolBinario
+                        needFolderUnit = True
+
+                        listFolderUnit = self.__validationCommands.validationUnit(needFolderUnit)
+
+                        if listFolderUnit is not None:
+
+                            listSubFolder = arbolBinario.ArbolBinario
+                            nameFolder = "".join(args[1])
+
+                            listSubFolder = self.__validationCommands.validationFolder(listFolderUnit, nameFolder)
+
+                            if listSubFolder is not None:
+
+                                nameFolder = "".join(args[2])
+                                folder1 = self.__validationCommands.validationSubFolderGetReference(listSubFolder,nameFolder)
+                                
+                                if folder1 is not None:
+
+                                    listFiles = arbolNario
+                                    listSub = arbolBinario
+
+                                    listFiles = folder1.getFileListFolder()
+                                    raizFiles = folder1.getFileListFolder().getRaiz()
+                                    listSub = folder1.getFolderList()
+                                
+                                    self.__commands[comando].execute(listFiles, raizFiles, listSub)
+                                
+                                else:
+                                    print("Subcarpeta no ecnontrada")
+                            else:
+
+                                print("Carpeta no encontrada")
+                        else:
+                            print("Unidad no encontrada")
                     
                     #EJECUTA EL COMANDO MKDIR
                     if comando == "mkdir":
