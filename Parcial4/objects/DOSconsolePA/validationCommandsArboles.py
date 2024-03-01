@@ -60,6 +60,16 @@ class validationCommands:
         
         return True
     
+    def validationSubFolderGetReference(self,folderList, nameFolder):
+
+        for folder in folderList.__iter__():
+
+            if nameFolder.lower() == folder.getNameFolder().lower():
+                
+                return folder.getFolderReference()
+
+        return None
+    
     def validationSubFolder(self,folderList, nameFolder):
 
         for folder in folderList.__iter__():
@@ -73,7 +83,7 @@ class validationCommands:
     def validationFolder(self,folderList, nameFolder):
 
         for folder in folderList.__iter__():
-            
+
             if nameFolder.lower() == folder.getNameFolder().lower():
                 return folder.getFolderList()
 

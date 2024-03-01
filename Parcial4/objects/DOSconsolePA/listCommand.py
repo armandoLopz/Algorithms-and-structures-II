@@ -1,5 +1,7 @@
 from . import command
 from objects.SystemComponents.folder import folder as fl
+from objects.SystemComponents.file import file 
+
 import sys
 
 class DirCommand(command.command):  
@@ -25,9 +27,44 @@ class HelpCommand(command.command):
         print("help - Muestra esta ayuda")
 
 class Cd(command.command):
-    def execute():
-        #AGREGAR LAS ACCIONES QUE SE PUEDEN HACER EN EL DIRECTORIO ESTABLECIDO
-        return print("Directorio encontrado")
+    def execute(listFiles, raizFiles, listSub):
+        
+        #try:
+            
+            print("Ingrese la accion que desea realizar ")
+            print("2- Agregar Archivo ")
+            print("3- Agregar subcarpeta")
+            print("4- Regresar al directorio padre")
+
+            decition = int(input())
+
+            if decition == 2:
+
+                nameFile = input("Ingrese el nombre del archivo")
+                newFile = file(0, nameFile ,0, ".txt", None, None, None)
+
+                listFiles.insertar(newFile, raizFiles)
+
+                return print("Se agrego el archivo con exito")
+            
+            elif decition == 3:
+
+                nameFolder = input("Ingrese el nombre de la carpeta")
+                newFolder = fl(0,nameFolder, 0,None,None,None)
+                listSub.insertar(newFolder)
+                return print("Se agrego el folder a la carpeta SubFolder con exito")
+            
+            elif decition == 4:
+                
+                return print("Regreso al directorio padre con exito")
+            
+            else:
+
+                return print("Seleccione una opcion valida")
+
+        #except:
+         #   return print("Seleccione una opcion valida")
+    
         
 class Mkdir(command.command):
 
@@ -85,8 +122,6 @@ class rmdir(command.command):
             correctFolder = False
 
             for folder in list.__iter__():
-                print("NAME FOLDER ENTRADA " + nameFolder)
-                print("NAME FOLDER ENTRADA " + folder.getNameFolder().lower())
                 
                 if nameFolder.lower() == folder.getNameFolder().lower():
                         
