@@ -2,8 +2,6 @@ from . import listCommand, validationCommandsArboles
 from objects.SystemComponents.folder import folder
 from objects.SystemComponents.file import file
 from objects.TDA.Cola.cola import Cola
-
-from objects.TDA.LinkedList.linkedList import ListaEnlazada 
 from objects.TDA.arbol_binario import arbolBinario
 from objects.TDA.arbol_nario import arbolNario
 
