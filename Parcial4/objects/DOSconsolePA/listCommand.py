@@ -29,8 +29,7 @@ class HelpCommand(command.command):
 class Cd(command.command):
     def execute(listFiles, raizFiles, listSub):
         
-        #try:
-            
+        try:   
             print("Ingrese la accion que desea realizar ")
             print("2- Agregar Archivo ")
             print("3- Agregar subcarpeta")
@@ -62,8 +61,8 @@ class Cd(command.command):
 
                 return print("Seleccione una opcion valida")
 
-        #except:
-         #   return print("Seleccione una opcion valida")
+        except:
+            return print("Seleccione una opcion valida")
     
         
 class Mkdir(command.command):
